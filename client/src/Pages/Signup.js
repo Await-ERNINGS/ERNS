@@ -20,9 +20,9 @@ export const Signup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle sign-up logic here
-    // e.g., send data to server or perform client-side validation
-    // You can use the values of username, email, and password in this function
+    // Handle sign-up logic
+    // send data to server or perform client-side validation
+    // use the values of username, email, and password 
   };
 
   return (

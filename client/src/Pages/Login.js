@@ -18,7 +18,7 @@ export const Login = () => {
     event.preventDefault();
     console.log("Username:", username);
     console.log("Password:", password);
-    // Perform your login logic or API call here
+    // Perform login logic or API call
   };
 
   return (
