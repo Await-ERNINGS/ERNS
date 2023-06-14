@@ -15,11 +15,14 @@ const Carousel = () => {
   };
 
   return (
-    <div className="carousel">
-      <button onClick={handlePrevious}>{"<"}</button>
-      <div>hello</div>
-      <button onClick={handleNext}>{">"}</button>
-    </div>
+    <>
+      <div className="carousel">
+        <button onClick={handlePrevious}>{"<"}</button>
+        <div>hello</div>
+        <button onClick={handleNext}>{">"}</button>
+      </div>
+      <div>{index}</div>
+    </>
   );
 };
 
