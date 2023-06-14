@@ -1,0 +1,14 @@
+.title-container {
+  text-align: center;
+  height: 80vh;
+}
+
+.welcome {
+  margin: 50px;
+}
+
+.carousel {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+
 import "./App.css";
 import { Login } from "./Pages/Login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Signup } from "./Pages/Signup";
+
+import { Welcome } from "./Pages/Welcome";
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -25,6 +28,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
+
       <BrowserRouter>
       <Routes>
       <Route path="/" element={<Login />} />
@@ -32,7 +36,14 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </BrowserRouter>
+
+        <h1>Header</h1>
+
       </header>
+      <div>
+        <Welcome />
+      </div>
+      <h1>Footer</h1>
       <p className="App-intro">message: {message}</p>
     </div>
   );
