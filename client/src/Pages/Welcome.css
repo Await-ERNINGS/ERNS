@@ -4,11 +4,14 @@
 }
 
 .welcome {
-  margin: 50px;
+  margin: 10px;
 }
 
-.carousel {
-  justify-content: center;
-  display: flex;
-  flex-direction: row;
+img {
+  height: 150px;
+  width: 200px;
+}
+
+.footer {
+  height: 5vh;
 }
