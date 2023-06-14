@@ -28,3 +28,39 @@ app.get('/transactions/', cors(corsOptions), async (req, res) => {
     [dateFrom, dateTo]);
   res.send( transactions );
 });
+
+//Add a transaction
+app.post('/transactions/', cors(corsOptions), async (req, res) => {
+    const { date, type, amount, description, category } = req.body;
+    const [ transactions ] = await promisePool.query(
+      "INSERT INTO transactions (date, type, amount, description, category) VALUES (?, ?, ?, ?, ?)",
+      [date, type, amount, description, category];
+      res.send( transactions );
+});
+
+//Delete a transaction
+app.delete('/transactions/:id', cors(corsOptions), async (req, res) => {
+  const { id } = req.params;
+  const [ transactions ] = await promisePool.query(
+    "DELETE FROM transactions WHERE id = ?",
+    [id]);
+    res.send( transactions );
+});
+
+//Update a transaction
+app.put('/transactions/:id', cors(corsOptions), async (req, res) => {
+  const { id } = req.params;
+  const { date, type, amount, description, category } = req.body;
+  const [ transactions ] = await promisePool.query(
+    "UPDATE transactions SET date = ?, type = ?, amount = ?, description = ?, category = ? WHERE id = ?",
+    [date, type, amount, description, category, id]);
+    res.send( transactions );
+});
+
+
+
+
+
+
+
+
