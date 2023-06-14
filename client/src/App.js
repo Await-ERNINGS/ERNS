@@ -26,26 +26,21 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-
-      <BrowserRouter>
-      <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
-    </BrowserRouter>
-
-        <h1>Header</h1>
-
-      </header>
-      <div>
-        <Welcome />
+    <>
+      <div className="App">
+        <header className="App-header">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </Routes>
+          </BrowserRouter>
+        </header>
+        <div>
+          <Welcome />
+        </div>
       </div>
-      <h1>Footer</h1>
-      <p className="App-intro">message: {message}</p>
-    </div>
+    </>
   );
 };
 

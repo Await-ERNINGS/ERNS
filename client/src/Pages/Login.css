@@ -2,17 +2,16 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  
 }
 
 body {
-    background-color: rgb(207, 251, 251);
+  background-color: rgb(207, 251, 251);
 }
 .login-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  height:60vh;
+  height: 60vh;
 }
 
 .input {
@@ -22,7 +21,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding: 50px ;
+  padding: 50px;
   border-radius: 20px;
   word-wrap: break-word;
   word-break: break-all;
@@ -30,32 +29,31 @@ body {
 
 button {
   cursor: pointer;
-  font-size: 1.20rem;
+  font-size: 1.2rem;
   padding-left: 115px;
   padding-right: 115px;
   border: 1px solid rgb(198, 235, 239);
-  background-color: rgb(8, 217, 240); 
+  background-color: rgb(8, 217, 240);
 
   border-radius: 20px;
 }
 
 button:active {
-    background-color: #0099FF; 
-    transform: scale(0.95);
-  }
+  background-color: #0099ff;
+  transform: scale(0.95);
+}
 
-  h1 {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    padding: 5px ;
-    word-wrap: break-word;
-    word-break: break-all;
-  }
+/* h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px;
+  word-wrap: break-word;
+  word-break: break-all;
+} */
 
-  .Signup {
-    padding-left: 80px;
-    padding-top: 40px;
-  }
+.Signup {
+  padding-left: 80px;
+  padding-top: 40px;
+}
