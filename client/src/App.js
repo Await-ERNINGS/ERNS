@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import { Login } from "./Pages/Login";
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -22,7 +23,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1 className="App-title">Welcome to React</h1>
+        <Login></Login>
       </header>
       <p className="App-intro">message: {message}</p>
     </div>
