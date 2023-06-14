@@ -1,54 +1,49 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+
 import "./Login.css";
 
+import { GoogleLogin } from "react-google-login";
+
+const clientId =
+  "909444633630-70jp9s6hngh7689ti0nmui954qr1tpub.apps.googleusercontent.com";
+
 export const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const onSuccess = (res) => {
+    console.log("Login Success! Current User: ", res);
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Username:", username);
-    console.log("Password:", password);
-    // Perform login logic or API call
+  const onFailure = (res) => {
+    console.log("Login Failed! res: ", res);
   };
 
   return (
-    <>
-      <h1>Login</h1>
-      <div className="login-form">
-        <form onSubmit={handleSubmit}>
-          <div className="input">
-            <label htmlFor="username">Username:</label>
-            <input
-              type="text"
-              id="username"
-              value={username}
-              onChange={handleUsernameChange}
-            />
-            <br />
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-          </div>
-          <br />
-          <button type="submit">Login</button>
-          <br />
-        <Link className="Signup" to="/signup">Create an account</Link>
-        </form>
-      </div>
-    </>
+    <div className="login-page">
+      <header className="header">
+        <h2>ERN$</h2>
+      </header>
+
+      <main className="container">
+        <div id="signInButton">
+          <p>Saving Today, Smiling Tomorrow!! </p>
+
+          <GoogleLogin
+            clientId={clientId}
+            buttonText="Login"
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            cookiePolicy={"single_host_origin"}
+            isSignedIn={true}
+          />
+        </div>
+      </main>
+
+      <footer className="footer">
+        <p>&copy; {new Date().getFullYear()} Copyright</p>
+
+        <div className="names">
+          <p>Developed by Ethan, Reid, Nicole, Samira</p>
+        </div>
+      </footer>
+    </div>
   );
 };
