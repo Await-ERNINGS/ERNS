@@ -6,3 +6,9 @@
 .welcome {
   margin: 50px;
 }
+
+.carousel {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
