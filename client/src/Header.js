@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Header.css"
+import "./Header.css";
+import logo from "./images/logo.png";
 
 export const Header = (props) => {
   const isLoggedin = props.loggedIn;
@@ -9,14 +10,16 @@ export const Header = (props) => {
   return (
     <div>
       <header className="header">
-        <p style={{ fontSize: "xx-large" }}>ERN💲🐖💰💵</p>
+        <p>
+          <img alt="" src={logo}></img>
+        </p>
         {isLoggedin ? (
           <p style={{ textAlign: "right" }}>Welcome, {firstname}!</p>
         ) : (
-          <div className="login-header"><Link to="/login">Login</Link></div>
+          <div className="login-header">
+            <Link to="/login">Login</Link>
+          </div>
         )}
-
-        
       </header>
     </div>
   );

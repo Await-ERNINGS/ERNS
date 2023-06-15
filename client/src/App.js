@@ -4,9 +4,12 @@ import { gapi } from "gapi-script";
 import "./App.css";
 import { Login } from "./Pages/Login";
 import { Welcome } from "./Pages/Welcome";
+import { Dashboard } from "./Pages/Dashboard";
 import { Logout } from "./Pages/Logout";
 
-const clientId = "909444633630-70jp9s6hngh7689ti0nmui954qr1tpub.apps.googleusercontent.com";
+
+const clientId =
+  "909444633630-70jp9s6hngh7689ti0nmui954qr1tpub.apps.googleusercontent.com";
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -44,6 +47,10 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/login" element={<Login />} />
+
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+
             <Route path="/logout" element={<Logout />} />
           </Routes>
         </header>
