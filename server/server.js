@@ -117,15 +117,15 @@ app.put('/category/:id/:name', cors(corsOptions), async (req, res) => {
         res.send( descriptionUpdate );
     });
 
-    //Update type
-    app.put('/type/', cors(corsOptions), async(req, res) =>{
-      const type = req.params.type;
-      const id = req.params.id;
-      const [ typeUpdate ] = await promisePool.query(
-        "UPDATE transaction SET type = ? WHERE transaction_id = ?",
-        [type, id]);
-        res.send( typeUpdate );
-    });
+    // //Update type
+    // app.put('/type/', cors(corsOptions), async(req, res) =>{
+    //   const type = req.params.type;
+    //   const id = req.params.id;
+    //   const [ typeUpdate ] = await promisePool.query(
+    //     "UPDATE transaction SET type = ? WHERE transaction_id = ?",
+    //     [type, id]);
+    //     res.send( typeUpdate );
+    // });
     //Update 
     
     app.listen(PORT, () => {

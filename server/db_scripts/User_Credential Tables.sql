@@ -7,6 +7,7 @@ CREATE TABLE user_credentials (
   FOREIGN KEY (transaction_id) REFERENCES transaction(transaction_id)
 );
 
+--Populate data
 INSERT INTO user_credentials (username, transaction_id)
 VALUES
   ('EfficiencyMarriesEfficacy', 1),
