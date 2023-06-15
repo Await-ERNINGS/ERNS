@@ -1,0 +1,17 @@
+.title-container {
+  text-align: center;
+  height: 80vh;
+}
+
+.welcome {
+  margin: 10px;
+}
+
+img {
+  height: 150px;
+  width: 200px;
+}
+
+.footer {
+  height: 5vh;
+}
