@@ -5,7 +5,7 @@ CREATE TABLE category (
   
   INSERT INTO category (category_name) 
   VALUES
-  
+  -- Income
   ("Income - Employment "),               
   ("Income - Investment"),                
   ("Income - Dividends"),                 
@@ -17,7 +17,7 @@ CREATE TABLE category (
   ("Income - Self-employment"),           
   ("Income - Other"),                     
   
-  
+  -- Expenses
   ("Rent/Mortgage"),                      
   ("Groceries"),                          
   ("Transportation"),                     

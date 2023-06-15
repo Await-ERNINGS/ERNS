@@ -7,6 +7,7 @@ CREATE TABLE transaction (
   amount DECIMAL(10,2),
   FOREIGN KEY (category_id) REFERENCES category(category_id)
 );
+-- Populate Transaction Table
   INSERT INTO transaction (date, type, category_id, description, amount)
   VALUES
       ('2023-06-01', 'Expense', 11, 'Rent payment', 1200.00),
