@@ -1,0 +1,9 @@
+.expenses {
+  width: 50%;
+  float: left;
+}
+
+.incomes {
+  width: 50%;
+  float: right;
+}
