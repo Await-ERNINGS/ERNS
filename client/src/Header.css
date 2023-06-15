@@ -1,29 +1,30 @@
 .header {
-    background-color: rgb(26, 243, 243);
-    top: 0;
-}
-p {
-    text-align: left;
-}
-.login-header {
-    text-align: end;
-    padding-right: 10px;
-   
-}
-
-h1 {
-    text-align: center;
-}
-
-p .login-header {
-    position:fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: none;
-    padding: 0px;
+    flex-direction: row;
+    background-color: rgb(53, 255, 248);
+    margin: 0;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-grow: 1;
-}
+  }
+  
+  p {
+    text-align: left;
+    font-weight: bolder;
+    margin: 0;
+  }
+  
+  .login-header {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  .login-header p {
+    margin-right: 10px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  

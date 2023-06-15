@@ -11,7 +11,7 @@ export const Header = (props) => {
       <header className="header">
         <p style={{ fontSize: "xx-large" }}>ERN$🐖💰💲💵</p>
         {isLoggedin ? (
-          <p style={{ textAlign: "right" }}>Welcome! {firstname}</p>
+          <p style={{ textAlign: "right" }}>Welcome, {firstname}!</p>
         ) : (
           <div className="login-header"><Link to="/login">Login</Link></div>
         )}

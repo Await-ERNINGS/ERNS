@@ -29,7 +29,7 @@ export const Login = () => {
         <Header loggedIn={loggedIn} firstname={firstname} />
         <main className="container">
           <div id="loggedInContent">
-            <h2>You are already logged in, {firstname}!</h2>
+            <h3>You are already logged in, {firstname}!</h3>
             {/* Add any additional content for logged-in users */}
           </div>
         </main>
