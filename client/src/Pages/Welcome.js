@@ -9,6 +9,7 @@ export const Welcome = () => {
     <>
       <Header />
       <div className="title-container">
+        <h1>Welcome to ERN$!</h1>
         <h2>Save Today, Secure Tomorrow!</h2>
         <Carousel />
       </div>

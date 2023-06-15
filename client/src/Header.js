@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "./Header.css"
 
 export const Header = (props) => {
   const isLoggedin = props.loggedIn;
@@ -11,10 +13,10 @@ export const Header = (props) => {
         {isLoggedin ? (
           <p style={{ textAlign: "right" }}>Welcome! {firstname}</p>
         ) : (
-          <p style={{ textAlign: "right" }}>Login</p>
+          <div className="login-header"><Link to="/login">Login</Link></div>
         )}
 
-        <h1 style={{ textAlign: "center" }}>Welcome to ERN$!</h1>
+        
       </header>
     </div>
   );
