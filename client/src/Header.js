@@ -9,7 +9,7 @@ export const Header = (props) => {
   return (
     <div>
       <header className="header">
-        <p style={{ fontSize: "xx-large" }}>ERN$🐖💰💲💵</p>
+        <p style={{ fontSize: "xx-large" }}>ERN💲🐖💰💵</p>
         {isLoggedin ? (
           <p style={{ textAlign: "right" }}>Welcome, {firstname}!</p>
         ) : (
