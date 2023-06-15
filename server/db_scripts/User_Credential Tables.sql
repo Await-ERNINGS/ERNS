@@ -1,7 +1,21 @@
 CREATE TABLE user_credentials (
-  User_ID INT PRIMARY KEY AUTO_INCREMENT,
-  Username VARCHAR(50),
-  Password VARCHAR(255),
-  Transaction_ID INT,
-  FOREIGN KEY (Transaction_ID) REFERENCES transactions(Transaction_ID)
+  user_id INT AUTO_INCREMENT PRIMARY KEY ,
+  username VARCHAR(50),
+  -- password VARCHAR(255),
+  -- email VARCHAR(255),
+  transaction_id INT,
+  FOREIGN KEY (transaction_id) REFERENCES transaction(transaction_id)
 );
+
+INSERT INTO user_credentials (username, transaction_id)
+VALUES
+  ('EfficiencyMarriesEfficacy', 1),
+  ('EfficiencyMarriesEfficacy', 2),
+  ('EfficiencyMarriesEfficacy', 3),
+  ('EfficiencyMarriesEfficacy', 4),
+  ('EfficiencyMarriesEfficacy', 5),
+  ('EfficiencyMarriesEfficacy', 6),
+  ('EfficiencyMarriesEfficacy', 7),
+  ('EfficiencyMarriesEfficacy', 8),
+  ('EfficiencyMarriesEfficacy', 9),
+  ('EfficiencyMarriesEfficacy', 10);
