@@ -27,7 +27,7 @@ app.get("/transactions/", cors(corsOptions), async (req, res) => {
   const dateFrom = req.params.date1;
   const dateTo = req.params.date2;
   const [transactions] = await promisePool.query(
-    "SELECT * FROM transactions WHERE DATE BETWEEN ? AND ?",
+    "SELECT * FROM transaction WHERE DATE BETWEEN ? AND ?",
     [dateFrom, dateTo]
   );
   res.send(transactions);
@@ -133,7 +133,7 @@ app.put("/description/:id", cors(corsOptions), async (req, res) => {
   res.send(descriptionUpdate);
 });
 
-//Update type EXpense or Income....
+//Update type Expense or Income....
 app.put("/type/", cors(corsOptions), async (req, res) => {
   const type = req.params.type;
   const id = req.params.id;
@@ -159,13 +159,28 @@ app.get("/income", cors(corsOptions), async (req, res) => {
   res.send(income);
 });
 
-//get category expense hierarchy by amount....??
-app.get("/expensehierarchy", cors(corsOptions), async (req, res) => {
-  const [expensehierarchy] = await promisePool.query(
-    "SELECT category_id, category_name, SUM(amount) FROM transaction GROUP BY category_id ORDER BY SUM(amount)"
-  );
-  res.send(expensehierarchy);
-});
+//Get total income by category.....Tested in Portman
+ app.get('/incomebycategory', cors(corsOptions), async(req, res) =>{
+  const [ incomebycategory ] = await promisePool.query(
+    `SELECT c.category_id, c.category_name, SUM(t.amount) AS total_amount
+    FROM transaction t
+    JOIN category c ON t.category_id = c.category_id
+    WHERE t.type = 'income'
+    GROUP BY c.category_id, c.category_name
+    ORDER BY total_amount;`);
+    res.send( incomebycategory );  
+  });
+ //Get total expenses by category.....Tested in Portman
+ app.get('/expensebycategory', cors(corsOptions), async(req, res) =>{
+  const [ expensebycategory ] = await promisePool.query(
+    `SELECT c.category_id, c.category_name, SUM(t.amount) AS total_amount
+    FROM transaction t
+    JOIN category c ON t.category_id = c.category_id
+    WHERE t.type = 'expense'
+    GROUP BY c.category_id, c.category_name
+    ORDER BY total_amount;`);
+    res.send( expensebycategory );  
+  });
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
