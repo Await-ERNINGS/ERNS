@@ -5,8 +5,10 @@ import "./App.css";
 import { Login } from "./Pages/Login";
 import { Signup } from "./Pages/Signup";
 import { Welcome } from "./Pages/Welcome";
+import { Dashboard } from "./Pages/Dashboard";
 
-const clientId = "909444633630-70jp9s6hngh7689ti0nmui954qr1tpub.apps.googleusercontent.com";
+const clientId =
+  "909444633630-70jp9s6hngh7689ti0nmui954qr1tpub.apps.googleusercontent.com";
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -45,6 +47,7 @@ const App = () => {
             <Route path="/" element={<Welcome />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </header>
         <div>{/* Add any other components or content here */}</div>
