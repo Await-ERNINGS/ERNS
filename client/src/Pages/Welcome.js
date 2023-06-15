@@ -1,5 +1,18 @@
 import React from "react";
+import "./Welcome.css";
+import Carousel from "../Carousel";
+import { Header } from "../Header";
+import { Footer } from "../Footer";
 
 export const Welcome = () => {
-  return <div>Welcome</div>;
+  return (
+    <>
+      <Header />
+      <div className="title-container">
+        <h2>Save Today, Secure Tomorrow!</h2>
+        <Carousel />
+      </div>
+      <Footer />
+    </>
+  );
 };
