@@ -2,9 +2,10 @@ import React from "react";
 import categorize1 from "./images/categorize1.jpg";
 import record2 from "./images/record2.jpg";
 import savemoney3 from "./images/savemoney3.jpg";
+import save from "./images/save.jpg";
 import { Carousel } from "react-carousel-minimal";
 
-const myCarousel = () => {
+const MyCarousel = () => {
   const data = [
     {
       image: categorize1,
@@ -12,11 +13,15 @@ const myCarousel = () => {
     },
     {
       image: record2,
-      caption: "Record Expenses Promptly and Accurately !",
+      caption: "Record Expenses Promptly and Accurately!",
     },
     {
       image: savemoney3,
-      caption: "Analyze, Review and Save Money !",
+      caption: "Analyze, Review and Save Money!",
+    },
+    {
+      image: save,
+      caption: "Take control of your life!",
     },
   ];
 
@@ -30,6 +35,10 @@ const myCarousel = () => {
     fontWeight: "bold",
   };
 
+  const imageStyle = {
+    boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
+  };
+
   return (
     <div style={{ textAlign: "center" }}>
       <div
@@ -39,7 +48,7 @@ const myCarousel = () => {
       >
         <Carousel
           data={data}
-          time={4000}
+          time={3000}
           width="850px"
           height="500px"
           captionStyle={captionStyle}
@@ -61,10 +70,19 @@ const myCarousel = () => {
             maxHeight: "200px",
             margin: "40px auto",
           }}
-        />
+        >
+          {data.map((item, index) => (
+            <img
+              key={index}
+              src={item.image}
+              alt={item.caption}
+              style={imageStyle}
+            />
+          ))}
+        </Carousel>
       </div>
     </div>
   );
 };
 
-export default myCarousel;
+export default MyCarousel;

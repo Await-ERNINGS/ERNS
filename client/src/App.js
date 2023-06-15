@@ -1,28 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { gapi } from 'gapi-script'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { gapi } from "gapi-script";
 import "./App.css";
 import { Login } from "./Pages/Login";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Signup } from "./Pages/Signup";
-
 import { Welcome } from "./Pages/Welcome";
-const clientId =
-"909444633630-70jp9s6hngh7689ti0nmui954qr1tpub.apps.googleusercontent.com";
+
+const clientId = "909444633630-70jp9s6hngh7689ti0nmui954qr1tpub.apps.googleusercontent.com";
 
 const App = () => {
   const [message, setMessage] = useState("");
- 
-  
-useEffect(() => {
-  function start() {
-    gapi.client.init({
-      clientId: clientId,
-      scope: ""
 
-    })
-  }  gapi.load('client:auth2', start);
-}
-)
+  useEffect(() => {
+    const initGoogleClient = async () => {
+      await gapi.client.init({
+        clientId: clientId,
+        scope: "email", // Adjust the scope according to your requirements
+      });
+    };
+
+    gapi.load("client:auth2", initGoogleClient);
+  }, []);
+
   useEffect(() => {
     const fetchMethod = async () => {
       try {
@@ -39,21 +38,18 @@ useEffect(() => {
   }, []);
 
   return (
-    <>
+    <BrowserRouter>
       <div className="App">
         <header className="App-header">
-          <BrowserRouter>
-            <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-            </Routes>
-          </BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Welcome />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
         </header>
-        <div>
-          <Welcome />
-        </div>
+        <div>{/* Add any other components or content here */}</div>
       </div>
-    </>
+    </BrowserRouter>
   );
 };
 
