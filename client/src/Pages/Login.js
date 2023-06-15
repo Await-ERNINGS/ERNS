@@ -1,26 +1,30 @@
-import React from "react";
-
+import React, { useState } from "react";
 import "./Login.css";
-
 import { GoogleLogin } from "react-google-login";
+import { Header } from "../Header";
+import { Footer } from "../Footer";
 
 const clientId =
   "909444633630-70jp9s6hngh7689ti0nmui954qr1tpub.apps.googleusercontent.com";
 
 export const Login = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [firstname, setFirstname] = useState("");
+
   const onSuccess = (res) => {
-    console.log("Login Success! Current User: ", res);
+    setLoggedIn(true);
+    setFirstname(res.profileObj.name);
+    console.log("Login Success! Current User: ", res.profileObj.name);
   };
 
   const onFailure = (res) => {
+    setLoggedIn(false);
     console.log("Login Failed! res: ", res);
   };
 
   return (
     <div className="login-page">
-      <header className="header">
-        <h2>ERN$</h2>
-      </header>
+      <Header loggedIn={loggedIn} firstname={firstname} />
 
       <main className="container">
         <div id="signInButton">
@@ -36,14 +40,7 @@ export const Login = () => {
           />
         </div>
       </main>
-
-      <footer className="footer">
-        <p>&copy; {new Date().getFullYear()} Copyright</p>
-
-        <div className="names">
-          <p>Developed by Ethan, Reid, Nicole, Samira</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
