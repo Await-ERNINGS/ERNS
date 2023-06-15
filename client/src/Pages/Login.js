@@ -3,6 +3,7 @@ import "./Login.css";
 import { GoogleLogin } from "react-google-login";
 import { Header } from "../Header";
 import { Footer } from "../Footer";
+import { Logout } from "./Logout";
 
 const clientId =
   "909444633630-70jp9s6hngh7689ti0nmui954qr1tpub.apps.googleusercontent.com";
@@ -29,10 +30,11 @@ export const Login = () => {
         <Header loggedIn={loggedIn} firstname={firstname} />
         <main className="container">
           <div id="loggedInContent">
-            <h3>You are already logged in, {firstname}!</h3>
-            {/* Add any additional content for logged-in users */}
+            <h3>Don't save what is left after spending; spend what is left after saving!</h3>
+           
           </div>
         </main>
+        <Logout />
         <Footer />
       </div>
     );
