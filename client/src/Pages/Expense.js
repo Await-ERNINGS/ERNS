@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
+
 import { Header } from "../Header";
 import { Footer } from "../Footer";
 import { useNavigate } from "react-router-dom";
@@ -97,9 +100,15 @@ export const Expense = () => {
     setTotalAmount(total);
   };
 
+
   const handleVisualize = () => {
     navigate("/dashboard");
   };
+
+  // const handleVisualizeClick = () => {
+  //   navigate("/dashboard");
+  // };
+
 
   return (
     <div>
@@ -197,11 +206,15 @@ export const Expense = () => {
 
       <p>Total Amount: {totalAmount}</p>
 
+
       <div className="button-container">
         <button className="small-button" onClick={handleVisualize}>
           Visualize
         </button>
       </div>
+
+      {/* <button onClick={handleVisualizeClick}>Visualize</button> */}
+
       <Footer />
     </div>
   );
