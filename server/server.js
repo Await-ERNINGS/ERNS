@@ -52,8 +52,8 @@ app.get("/transactions/:date", cors(corsOptions), async (req, res) => {
 });
 
 //Request transactions by expenses.......Tested by Portman
-//Format.....http://localhost:5000/expensetransactions
-app.get("/expensetransactions", cors(corsOptions), async (req, res) => {
+//Format.....http://localhost:5000/expense_transactions
+app.get("/expense_transactions", cors(corsOptions), async (req, res) => {
   const [transactions] = await promisePool.query(
     "SELECT * FROM transaction WHERE type = 'expense'"
   );
@@ -61,8 +61,8 @@ app.get("/expensetransactions", cors(corsOptions), async (req, res) => {
 });
 
 //Request transactions by income....Tested by Portman
-//Format..........http://localhost:5000/incometransactions
-app.get("/incometransactions", cors(corsOptions), async (req, res) => {
+//Format..........http://localhost:5000/income_transactions
+app.get("/income_transactions", cors(corsOptions), async (req, res) => {
   const [transactions] = await promisePool.query(
     "SELECT * FROM transaction WHERE type = 'income'"
   );
@@ -70,8 +70,8 @@ app.get("/incometransactions", cors(corsOptions), async (req, res) => {
 });
 
 //Add a transaction.......Tested in Portman
-//Format............http://localhost:5000/addtransaction/
-app.post("/addtransaction/", cors(corsOptions), async (req, res) => {
+//Format............http://localhost:5000/add_transaction/
+app.post("/add_transaction/", cors(corsOptions), async (req, res) => {
   const { date, type, amount, description, category } = req.body;
   console.log(req.body);
   console.log(category);
@@ -79,18 +79,19 @@ app.post("/addtransaction/", cors(corsOptions), async (req, res) => {
     "SELECT category_id FROM category WHERE category_name = ?",
     [category]
   );
-  console.log(categoryID);  
+  console.log(categoryID);
   const cat_id = categoryID[0].category_id;
-  const [transactions] = await promisePool.query(`INSERT INTO transaction 
+  const [transactions] = await promisePool.query(
+    `INSERT INTO transaction 
   (date, type, amount, description, category_id) VALUES (?, ?, ?, ?, ?)`,
-  [date, type, amount, description, cat_id]
+    [date, type, amount, description, cat_id]
   );
   res.send(transactions);
 });
 
 //Delete a transaction....Tested in Postman
-//Format.....http://localhost:5000/deletetransaction/11
-app.delete("/deletetransaction/:id", cors(corsOptions), async (req, res) => {
+//Format.....http://localhost:5000/delete_transaction/11
+app.delete("/delete_transaction/:id", cors(corsOptions), async (req, res) => {
   const id = req.params.id;
   const [transactions] = await promisePool.query(
     "DELETE FROM transaction WHERE transaction_id = ?",
@@ -99,20 +100,36 @@ app.delete("/deletetransaction/:id", cors(corsOptions), async (req, res) => {
   res.send(transactions);
 });
 
-//Update a transaction.....
-app.put("/transaction/:id", cors(corsOptions), async (req, res) => {
-  const id = req.body.id
+//Update a transaction.....Tested in Portman
+//Format...........http://localhost:5000/update_transaction/11
+app.put("/update_transaction/:id", cors(corsOptions), async (req, res) => {
+  const trans_id = req.params.id;
+  //console.log(trans_id);
   const { date, type, amount, description, category } = req.body;
-  const [transactions] = await promisePool.query(
-    "UPDATE transaction SET date = ?, type = ?, amount = ?, description = ?, category_id = ? WHERE transaction_id = ?",
-    [date, type, amount, description, category, id]
+  //console.log(req.body);
+  console.log(category);
+  const [categoryID] = await promisePool.query(
+    "SELECT category_id FROM category WHERE category_name = ?",
+    [category]
   );
+
+  console.log(categoryID);
+  const cat_id = categoryID[0].category_id;
+  console.log(cat_id);
+  const [transactions] = await promisePool.query(
+    `UPDATE transaction SET date = ?, type = ?,
+    amount = ?, description = ?, category_id = ? WHERE transaction_id = ?`,
+    [date, type, amount, description, cat_id, trans_id]
+  );
+
+  console.log(transactions);
   res.send(transactions);
 });
 
-//Add a category.....
-app.post("/category/", cors(corsOptions), async (req, res) => {
-  const name = req.body.name;
+//Add a category.....Tested in Portman
+//Format......http://localhost:5000/add_category/Office Supplies
+app.post("/add_category/:name", cors(corsOptions), async (req, res) => {
+  const name = req.params.name;
   const [categories] = await promisePool.query(
     "INSERT INTO category (category_name) VALUES (?)",
     name
@@ -121,8 +138,9 @@ app.post("/category/", cors(corsOptions), async (req, res) => {
 });
 
 //Delete a category....Tested in Portman
-app.delete("/category/:id", cors(corsOptions), async (req, res) => {
-  const { id } = req.params;
+//Format......http://localhost:5000/delete_category/28
+app.delete("/delete_category/:id", cors(corsOptions), async (req, res) => {
+  const id = req.params.id;
   const [category] = await promisePool.query(
     "DELETE FROM category WHERE category_id = ?",
     [id]
@@ -130,8 +148,9 @@ app.delete("/category/:id", cors(corsOptions), async (req, res) => {
   res.send(category);
 });
 
-//Update a category...
-app.put("/category/:id/:name", cors(corsOptions), async (req, res) => {
+//Update a category...Tested in Portman
+//Format......http://localhost:5000/update_category/29/Fitness
+app.put("/update_category/:id/:name", cors(corsOptions), async (req, res) => {
   const id = req.params.id;
   const name = req.params.name;
   console.log(name);
@@ -142,25 +161,31 @@ app.put("/category/:id/:name", cors(corsOptions), async (req, res) => {
   res.send(categories);
 });
 
-//Update or Add a description....
-app.put("/description/:id", cors(corsOptions), async (req, res) => {
-  const id = req.params.id;
-  const description = req.body.description;
-  const [descriptionUpdate] = await promisePool.query(
-    "UPDATE transaction SET description = ? WHERE transaction_id = ?",
-    [description, id]
-  );
-  res.send(descriptionUpdate);
-});
+//Update or Add a description....Tested in Portman
+//Format....http://localhost:5000/update_description/11/Tesla Stock
+app.put(
+  "/update_description/:id/:description",
+  cors(corsOptions),
+  async (req, res) => {
+    const id = req.params.id;
+    const description = req.params.description;
+    const [descriptionUpdate] = await promisePool.query(
+      "UPDATE transaction SET description = ? WHERE transaction_id = ?",
+      [description, id]
+    );
+    res.send(descriptionUpdate);
+  }
+);
 
 //Update type Expense or Income....
-app.put("/type/", cors(corsOptions), async (req, res) => {
+app.put("/update_type/:id", cors(corsOptions), async (req, res) => {
   const type = req.params.type;
   const id = req.params.id;
   const [typeUpdate] = await promisePool.query(
     "UPDATE transaction SET type = ? WHERE transaction_id = ?",
     [type, id]
   );
+
   res.send(typeUpdate);
 });
 //Get total expenses....Tested in Postman
@@ -192,13 +217,11 @@ app.get("/incomebycategory", cors(corsOptions), async (req, res) => {
     GROUP BY c.category_id, c.category_name
     ORDER BY total_amount;`
   );
-
   res.send(incomebycategory);
 });
 
 //Get total expenses by category.....Tested in Portman
 //Format...........http://localhost:5000/expensebycategory
-
 app.get("/expensebycategory", cors(corsOptions), async (req, res) => {
   const [expensebycategory] = await promisePool.query(
     `SELECT c.category_id, c.category_name, SUM(t.amount) AS total_amount
@@ -208,7 +231,6 @@ app.get("/expensebycategory", cors(corsOptions), async (req, res) => {
     GROUP BY c.category_id, c.category_name
     ORDER BY total_amount;`
   );
-
   res.send(expensebycategory);
 });
 
