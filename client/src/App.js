@@ -7,6 +7,7 @@ import { Welcome } from "./Pages/Welcome";
 import { Dashboard } from "./Pages/Dashboard";
 import { Logout } from "./Pages/Logout";
 import { Expense } from "./Pages/Expense"
+import { Income } from "./Pages/Income";
 
 const clientId =
   "909444633630-70jp9s6hngh7689ti0nmui954qr1tpub.apps.googleusercontent.com";
@@ -56,6 +57,8 @@ const App = () => {
 
             <Route path="/logout" element={<Logout />} />
             <Route path="/expense" element={<Expense/>}/>
+            <Route path="/income" element={<Income/>}/>
+
           </Routes>
         </header>
         <div>{/* Add any other components or content here */}</div>
