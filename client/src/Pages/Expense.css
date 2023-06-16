@@ -71,9 +71,14 @@ button:hover {
     padding: 5px 10px;
   }
   
+  .total-amount {
+    margin-top: 20px;
+    margin-bottom: 10px; /* Adjust as needed */
+    font-weight: bold;
+  }
+  
   .button-container {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
   }
-  

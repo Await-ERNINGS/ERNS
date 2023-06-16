@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 import { Header } from "../Header";
 import { Footer } from "../Footer";
+import { useNavigate } from "react-router-dom";
 import "./Expense.css";
 
 export const Expense = () => {
-  const navigate = useNavigate();
-
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categoryAmounts, setCategoryAmounts] = useState({});
   const [categoryDescriptions, setCategoryDescriptions] = useState({});
   const [categoryDates, setCategoryDates] = useState({});
   const [tableData, setTableData] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [selectedRow, setSelectedRow] = useState(null);
 
   useEffect(() => {
     updateTotalAmount();
   }, [tableData]);
+
+  const navigate = useNavigate();
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
@@ -50,13 +53,45 @@ export const Expense = () => {
   const handleAddExpense = () => {
     if (selectedCategory.trim() !== "" && categoryAmounts[selectedCategory]) {
       const newTableRow = {
-        date: categoryDates[selectedCategory],
+        date: categoryDates[selectedCategory] || "", // Use an empty string as fallback
         category: selectedCategory,
         amount: categoryAmounts[selectedCategory],
         description: categoryDescriptions[selectedCategory],
       };
-      setTableData((prevTableData) => [...prevTableData, newTableRow]);
+      if (selectedRow !== null) {
+        const updatedTableData = [...tableData];
+        updatedTableData[selectedRow] = newTableRow;
+        setTableData(updatedTableData);
+        setSelectedRow(null);
+      } else {
+        setTableData((prevTableData) => [...prevTableData, newTableRow]);
+      }
     }
+  };
+
+  const handleDeleteRow = (index) => {
+    const updatedTableData = [...tableData];
+    updatedTableData.splice(index, 1);
+    setTableData(updatedTableData);
+    setSelectedRow(null);
+  };
+
+  const handleEditRow = (index) => {
+    const selectedRowData = tableData[index];
+    setSelectedCategory(selectedRowData.category);
+    setCategoryAmounts((prevCategoryAmounts) => ({
+      ...prevCategoryAmounts,
+      [selectedRowData.category]: selectedRowData.amount,
+    }));
+    setCategoryDescriptions((prevCategoryDescriptions) => ({
+      ...prevCategoryDescriptions,
+      [selectedRowData.category]: selectedRowData.description,
+    }));
+    setCategoryDates((prevCategoryDates) => ({
+      ...prevCategoryDates,
+      [selectedRowData.category]: selectedRowData.date,
+    }));
+    setSelectedRow(index);
   };
 
   const updateTotalAmount = () => {
@@ -65,14 +100,19 @@ export const Expense = () => {
     setTotalAmount(total);
   };
 
+
+  const handleVisualize = () => {
+    navigate("/dashboard");
+  };
+
   // const handleVisualizeClick = () => {
   //   navigate("/dashboard");
   // };
 
+
   return (
     <div>
       <Header />
-
       <label htmlFor="date">Date:</label>
       <input
         type="date"
@@ -82,18 +122,28 @@ export const Expense = () => {
       />
 
       <label htmlFor="category">Category:</label>
-      <select
-        id="category"
-        value={selectedCategory}
-        onChange={handleCategoryChange}
-      >
-        <option value="">-- Select Category --</option>
-        <option value="Food">Food</option>
-        <option value="Transportation">Transportation</option>
-        <option value="Entertainment">Entertainment</option>
-        <option value="Shopping">Shopping</option>
-        {/* Add more categories as needed */}
-      </select>
+      <label htmlFor="category">Category:</label>
+<select
+  id="category"
+  value={selectedCategory}
+  onChange={handleCategoryChange}
+>
+  <option value="">-- Select Category --</option>
+  <option value="Housing">Housing (Rent or Own)</option>
+  <option value="Utilities">Utilities</option>
+  <option value="Transportation">Transportation</option>
+  <option value="Food">Food</option>
+  <option value="Entertainment">Entertainment</option>
+  <option value="Health">Health</option>
+  <option value="Education">Education</option>
+  <option value="Taxes">Taxes</option>
+  <option value="Personal Care">Personal Care</option>
+  <option value="Miscellaneous">Miscellaneous</option>
+  <option value="Clothing">Clothing</option>
+  <option value="Insurance">Insurance</option>
+  <option value="Debt Payment">Debt Payment</option>
+</select>
+
 
       <label htmlFor="description">Description:</label>
       <input
@@ -111,16 +161,20 @@ export const Expense = () => {
         onChange={handleAmountChange}
       />
 
-      <button onClick={handleAddExpense}>Add Expense</button>
+      <div className="button-container">
+        <button className="small-button" onClick={handleAddExpense}>
+          {selectedRow !== null ? "Update Expense" : "Add Expense"}
+        </button>
+      </div>
 
       <table>
         <thead>
           <tr>
-           
-          <th>Date</th>
+            <th>Date</th>
             <th>Category</th>
             <th>Amount</th>
             <th>Description</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -130,6 +184,21 @@ export const Expense = () => {
               <td>{row.category}</td>
               <td>{row.amount}</td>
               <td>{row.description}</td>
+              <td>
+                <button
+                  className="small-button"
+                  onClick={() => handleEditRow(index)}
+                >
+                  Edit
+                </button>{" "}
+                {/* Add a space after the Edit button */}
+                <button
+                  className="small-button"
+                  onClick={() => handleDeleteRow(index)}
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -137,8 +206,15 @@ export const Expense = () => {
 
       <p>Total Amount: {totalAmount}</p>
 
+
+      <div className="button-container">
+        <button className="small-button" onClick={handleVisualize}>
+          Visualize
+        </button>
+      </div>
+
       {/* <button onClick={handleVisualizeClick}>Visualize</button> */}
-    
+
       <Footer />
     </div>
   );
