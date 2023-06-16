@@ -165,11 +165,12 @@ export const Income = () => {
         <tbody>
           {tableData.map((row, index) => (
             <tr key={index}>
-              <td>{row.date}</td>
-              <td>{row.job}</td>
-              <td>${(row.amount).toFixed(2)}</td>
-              <td>{row.description}</td>
+              <td className="center-content">{row.date}</td>
+              <td className="center-content">{row.job}</td>
+              <td className="center-content">${(row.amount).toFixed(2)}</td>
+              <td className="center-content">{row.description}</td>
               <td>
+                <div className="center-content">
                 <button
                   className="small-button"
                   onClick={() => handleEditRow(index)}
@@ -182,6 +183,7 @@ export const Income = () => {
                 >
                   Delete
                 </button>
+                </div>
               </td>
             </tr>
           ))}
@@ -192,9 +194,14 @@ export const Income = () => {
 
       <div className="button-container">
         <button className="small-button" onClick={handleVisualize}>
+          <div className="coin-stack"></div>
           Visualize
         </button>
       </div>
+      {/* <span class="money"></span> */}
+      
+
+
       <Footer />
     </div>
   );
