@@ -7,7 +7,8 @@ table {
   margin-bottom: 20px;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ddd;
@@ -67,6 +68,7 @@ button:hover {
 
 /* Additional styling can be added as needed */
 .small-button {
+<<<<<<< HEAD
     font-size: 12px;
     padding: 5px 10px;
   }
@@ -83,3 +85,30 @@ button:hover {
     margin-bottom: 10px;
   }
 
+=======
+  font-size: 12px;
+  padding: 5px 10px;
+}
+
+.total-amount {
+  margin-top: 20px;
+  margin-bottom: 10px; /* Adjust as needed */
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.amount-input {
+  display: flex;
+  align-items: center;
+}
+
+.dollar-sign {
+  font-size: 16px;
+  margin-right: 5px;
+}
+>>>>>>> 58ecff055e49470263a3097e9757fe221fcbc07a

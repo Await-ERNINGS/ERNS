@@ -7,7 +7,7 @@ import "./Income.css";
 export const Income = () => {
   const [selectedJob, setSelectedJob] = useState("");
   const [jobAmounts, setJobAmounts] = useState({});
-  const [jobTitles, setJobTitles] = useState({});
+  const [jobDescriptions, setJobDescriptions] = useState({});
   const [jobDates, setJobDates] = useState({});
   const [tableData, setTableData] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
@@ -31,11 +31,11 @@ export const Income = () => {
     }));
   };
 
-  const handleJobTitleChange = (event) => {
-    const jobTitle = event.target.value;
-    setJobTitles((prevJobTitles) => ({
-      ...prevJobTitles,
-      [selectedJob]: jobTitle,
+  const handleDescriptionChange = (event) => {
+    const description = event.target.value;
+    setJobDescriptions((prevJobDescriptions) => ({
+      ...prevJobDescriptions,
+      [selectedJob]: description,
     }));
   };
 
@@ -52,8 +52,8 @@ export const Income = () => {
       const newTableRow = {
         date: jobDates[selectedJob] || "", // Use an empty string as fallback
         job: selectedJob,
-        amount: jobAmounts[selectedJob],
-        jobTitle: jobTitles[selectedJob],
+        description: jobDescriptions[selectedJob],
+        amount: parseFloat(jobAmounts[selectedJob]),
       };
       if (selectedRow !== null) {
         const updatedTableData = [...tableData];
@@ -80,9 +80,9 @@ export const Income = () => {
       ...prevJobAmounts,
       [selectedRowData.job]: selectedRowData.amount,
     }));
-    setJobTitles((prevJobTitles) => ({
-      ...prevJobTitles,
-      [selectedRowData.job]: selectedRowData.jobTitle,
+    setJobDescriptions((prevJobDescriptions) => ({
+      ...prevJobDescriptions,
+      [selectedRowData.job]: selectedRowData.description,
     }));
     setJobDates((prevJobDates) => ({
       ...prevJobDates,
@@ -112,36 +112,39 @@ export const Income = () => {
         onChange={handleDateChange}
       />
 
-<label htmlFor="job">Job:</label>
-<select id="job" value={selectedJob} onChange={handleJobChange}>
-  <option value="">-- Select Job --</option>
-  <option value="Employment Income">Employment Income</option>
-  <option value="Self-Employment">Self-Employment</option>
-  <option value="Rental Income">Rental Income</option>
-  <option value="Investment Income">Investment Income</option>
-  <option value="Royalties">Royalties</option>
-  <option value="Retirement Income">Retirement Income</option>
-  <option value="Dividends">Dividends</option>
-  <option value="Gifts and Inheritances">Gifts and Inheritances</option>
-  <option value="Other">Other</option>
-  <option value="Government Assistance">Government Assistance</option>
-</select>
+      <label htmlFor="job">Job:</label>
+      <select id="job" value={selectedJob} onChange={handleJobChange}>
+        <option value="">-- Select Job --</option>
+        <option value="Employment Income">Employment Income</option>
+        <option value="Self-Employment">Self-Employment</option>
+        <option value="Rental Income">Rental Income</option>
+        <option value="Investment Income">Investment Income</option>
+        <option value="Royalties">Royalties</option>
+        <option value="Retirement Income">Retirement Income</option>
+        <option value="Dividends">Dividends</option>
+        <option value="Gifts and Inheritances">Gifts and Inheritances</option>
+        <option value="Other">Other</option>
+        <option value="Government Assistance">Government Assistance</option>
+      </select>
 
-<input
-  type="text"
-  id="jobTitle"
-  value={jobTitles[selectedJob] || ""}
-  onChange={handleJobTitleChange}
-/>
-
+      <label htmlFor="description">Description:</label>
+      <input
+        type="text"
+        id="description"
+        value={jobDescriptions[selectedJob] || ""}
+        onChange={handleDescriptionChange}
+      />
 
       <label htmlFor="amount">Amount:</label>
-      <input
-        type="number"
-        id="amount"
-        value={jobAmounts[selectedJob] || ""}
-        onChange={handleAmountChange}
-      />
+      <div className="amount-input-container">
+        <span className="currency-symbol">$</span>
+        <input
+          type="number"
+          id="amount"
+          value={jobAmounts[selectedJob] || ""}
+          onChange={handleAmountChange}
+        />
+      </div>
 
       <div className="button-container">
         <button className="small-button" onClick={handleAddIncome}>
@@ -155,8 +158,8 @@ export const Income = () => {
             <th>Date</th>
             <th>Job</th>
             <th>Amount</th>
-            <th>Job Title</th>
-            <th>Action</th>
+            <th>Description</th>
+            <th>Edit / Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -164,8 +167,8 @@ export const Income = () => {
             <tr key={index}>
               <td>{row.date}</td>
               <td>{row.job}</td>
-              <td>{row.amount}</td>
-              <td>{row.jobTitle}</td>
+              <td>${(row.amount).toFixed(2)}</td>
+              <td>{row.description}</td>
               <td>
                 <button
                   className="small-button"
@@ -173,7 +176,6 @@ export const Income = () => {
                 >
                   Edit
                 </button>{" "}
-                {/* Add a space after the Edit button */}
                 <button
                   className="small-button"
                   onClick={() => handleDeleteRow(index)}
@@ -186,7 +188,7 @@ export const Income = () => {
         </tbody>
       </table>
 
-      <p>Total Amount: {totalAmount}</p>
+      <p>Total Amount: ${totalAmount.toFixed(2)}</p>
 
       <div className="button-container">
         <button className="small-button" onClick={handleVisualize}>
