@@ -1,4 +1,6 @@
-const mysql = require('mysql2')
+
+const mysql = require("mysql2");
+
 
 exports.promisePool = mysql.createPool (
 {
@@ -7,6 +9,7 @@ exports.promisePool = mysql.createPool (
         password:   'XXXXXXXX',
         database:   'ern$'
     }).promise();
+
 
 
 

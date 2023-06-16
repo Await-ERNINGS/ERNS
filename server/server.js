@@ -192,10 +192,13 @@ app.get("/incomebycategory", cors(corsOptions), async (req, res) => {
     GROUP BY c.category_id, c.category_name
     ORDER BY total_amount;`
   );
+
   res.send(incomebycategory);
 });
+
 //Get total expenses by category.....Tested in Portman
 //Format...........http://localhost:5000/expensebycategory
+
 app.get("/expensebycategory", cors(corsOptions), async (req, res) => {
   const [expensebycategory] = await promisePool.query(
     `SELECT c.category_id, c.category_name, SUM(t.amount) AS total_amount
@@ -205,6 +208,7 @@ app.get("/expensebycategory", cors(corsOptions), async (req, res) => {
     GROUP BY c.category_id, c.category_name
     ORDER BY total_amount;`
   );
+
   res.send(expensebycategory);
 });
 
