@@ -1,8 +1,8 @@
 #signOutButton {
-   
-        position: fixed;
-        bottom: 475px;
-        right: 0px;
-      
-      
-}
+        position: relative;
+        bottom: 6px;
+        right: 0;
+        display: flex;
+        justify-content: flex-end;
+
+      }

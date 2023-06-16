@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-
+import { Logout } from "./Pages/Logout";
 import "./Header.css";
 import logo2 from "./images/logo2.png";
 
@@ -31,6 +31,11 @@ export const Header = (props) => {
               location.pathname !== "/about" && (
                 <Link to="/dashboard">Dashboard</Link>
                 )}
+             {location.pathname !== "/" &&
+              location.pathname !== "/login" &&
+              location.pathname !== "/about" && (
+                <Link to="/income">Income</Link>
+                )}
             {location.pathname !== "/" &&
               location.pathname !== "/login" &&
               location.pathname !== "/about" && (
@@ -46,7 +51,11 @@ export const Header = (props) => {
                 location.pathname !== "/expense" && (
                   <Link to="/login">Login</Link>
                 )}
-
+             {location.pathname !== "/about" &&
+                location.pathname !== "/login" &&
+                location.pathname !== "/" &&(
+                  <Logout />
+                )}
           </div>
         )}
       </header>

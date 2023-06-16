@@ -1,40 +1,56 @@
 .header {
-    flex-direction: row;
-    background-color: rgb(53, 255, 248);
-    margin: 0;
-    padding: 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  p {
-    text-align: left;
-    font-weight: bolder;
-    margin: 0;
-  }
-  
+  flex-direction: row;
+  background-color: rgb(53, 255, 248);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+p {
+  text-align: left;
+  font-weight: bolder;
+  margin: 0;
+
+}
+
+.login-header {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  padding-right: 10px;
+  margin: 10px;
+  gap: 50px;
+}
+
+.login-header p {
+  margin-right: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.header img {
+  width: 50px; /* Set the desired width */
+  height: 50px; /* Set the desired height */
+}
+
+.login-header a {
+  text-decoration: none; /* Remove underline */
+}
+
+/* Responsive Styles */
+
+
   .login-header {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    padding-right: 120px;
-    gap: 20px;
+    justify-content: center;
+    padding: 10px 0;
   }
-  
-  .login-header p {
 
-    margin-right: 10px;
-  }
-  
   h1 {
-    text-align: center;
+    margin-top: 10px;
   }
 
-  .header img {
-    width: 50px; /* Set the desired width */
-    height: 50px; /* Set the desired height */
-  }
-  .login-header a {
-    text-decoration: none; /* Remove underline */
-  }
