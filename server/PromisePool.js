@@ -7,3 +7,6 @@ exports.promisePool = mysql.createPool (
         password:   'XXXXXXXX',
         database:   'ern$'
     }).promise();
+
+
+
