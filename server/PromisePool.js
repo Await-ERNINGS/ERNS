@@ -11,5 +11,3 @@ exports.promisePool = mysql.createPool (
     }).promise();
 
 
-
-
