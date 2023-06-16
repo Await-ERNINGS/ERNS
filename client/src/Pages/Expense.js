@@ -211,11 +211,19 @@ export const Expense = () => {
         <tbody>
           {expense.map((row, index) => (
             <tr key={index}>
+
+              <td className="center-content">{row.date}</td>
+              <td className="center-content">{row.category}</td>
+              <td className="center-content">{(row.amount).toFixed(2)}</td>
+              <td className="center-content">{row.description}</td>
+
               <td>{row.date}</td>
               <td>{row.category_name}</td>
               <td>{row.amount}</td>
               <td>{row.description}</td>
+
               <td>
+                <div className="center-content">
                 <button
                   className="small-button"
                   onClick={() => handleEditRow(index)}
@@ -228,6 +236,7 @@ export const Expense = () => {
                 >
                   Delete
                 </button>
+                </div>
               </td>
             </tr>
           ))}
