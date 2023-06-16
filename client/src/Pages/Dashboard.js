@@ -12,7 +12,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export const Dashboard = () => {
   const [expenses, setExpenses] = useState([]);
   const [incomes, setIncomes] = useState([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const fetchExpenses = async () => {
@@ -107,9 +107,9 @@ export const Dashboard = () => {
     ],
   };
 
-  const handleExpenseClick = () => {
-    navigate("/expense");
-  };
+  // const handleExpenseClick = () => {
+  //   navigate("/expense");
+  // };
   return (
     <div>
       <Header />
@@ -126,7 +126,7 @@ export const Dashboard = () => {
         </div>
       </div>
       <h1>Total Saving: {totalSaving}</h1>
-      <button onClick={handleExpenseClick}>Expenses</button>
+      {/* <button onClick={handleExpenseClick}>Expenses</button> */}
       <Footer />
       <Logout />
     </div>

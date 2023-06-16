@@ -46,6 +46,7 @@ const App = () => {
         <header className="App-header">
           <Routes>
             <Route path="/" element={<Welcome />} />
+            <Route path="/welcome" element={<Welcome/>}/>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Logout />} />
             <Route path="/dashboard" element={<Dashboard />} />

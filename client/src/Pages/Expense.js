@@ -65,9 +65,9 @@ export const Expense = () => {
     setTotalAmount(total);
   };
 
-  const handleVisualizeClick = () => {
-    navigate("/dashboard");
-  };
+  // const handleVisualizeClick = () => {
+  //   navigate("/dashboard");
+  // };
 
   return (
     <div>
@@ -137,7 +137,7 @@ export const Expense = () => {
 
       <p>Total Amount: {totalAmount}</p>
 
-      <button onClick={handleVisualizeClick}>Visualize</button>
+      {/* <button onClick={handleVisualizeClick}>Visualize</button> */}
     
       <Footer />
     </div>
