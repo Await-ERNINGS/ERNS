@@ -12,7 +12,7 @@ export const Expense = () => {
   const [tableData, setTableData] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [selectedRow, setSelectedRow] = useState(null);
-
+  
   useEffect(() => {
     updateTotalAmount();
   }, [tableData]);
