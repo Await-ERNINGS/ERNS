@@ -5,7 +5,11 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  max-height:500px;
+  overflow-y:auto;
+
 }
+
 
 /* Form styles */
 .form-label {
@@ -59,18 +63,20 @@
 .table td {
   padding: 12px;
   border: 1px solid #ccc;
-  text-align: center;
 }
-
+/* Top titles */
 .table th {
   background-color: #f2f2f2;
   font-weight: bold;
 }
 
-.table td:last-child {
-  white-space: nowrap;
+.table td {
+  text-align: center;
 }
 
+.center-content {
+  text-align: center; /* Add this class for centering content */
+}
 .table-actions {
   display: flex;
   justify-content: center;
@@ -127,3 +133,86 @@
 .amount-input-container input[type="number"] {
   width: 80px;
 }
+/* Styling for table rows */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Styling for table hover effect */
+tr:hover {
+  background-color: #e9e9e9;
+}
+
+/* Styling for table borders */
+th,
+td {
+  border: 1px solid #ccc;
+}
+
+/* Styling for table header alignment */
+th {
+  text-align: center;
+}
+
+/* Button */
+
+
+/* Test */
+
+
+
+
+/* Income.css */
+
+/* Income.css */
+
+/* @keyframes money-float {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 30px) rotateY(180deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.money {
+  display: inline-block;
+  animation: money-float 4s ease-in-out infinite;
+  transform-style: preserve-3d;
+  width: 50px;
+  height: 50px;
+  background-image: url('../images/Fist.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center ;
+}
+
+/* Adjust the size of the money image */
+/* .money {
+  width: 50px;
+  height: 50px;
+/* } */ 
+
+.coin-stack {
+  width: 50px;
+  height: 50px;
+  background-image: url("../images/Coin.png"); /* Replace with your coin image path */
+  background-size: cover;
+  animation: coinStack 1.5s infinite linear;
+}
+
+@keyframes coinStack {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
