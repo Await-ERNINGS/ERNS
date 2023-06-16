@@ -27,4 +27,9 @@
   h1 {
     text-align: center;
   }
+
+  .header img {
+    width: 50px; /* Set the desired width */
+    height: 50px; /* Set the desired height */
+  }
   

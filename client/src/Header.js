@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
-import logo from "./images/logo.png";
+import logo2 from "./images/logo2.png";
 
 export const Header = (props) => {
   const isLoggedin = props.loggedIn;
@@ -11,7 +11,7 @@ export const Header = (props) => {
     <div>
       <header className="header">
         <p>
-          <img alt="" src={logo}></img>
+          <img alt="" src={logo2}></img>
         </p>
         {isLoggedin ? (
           <p style={{ textAlign: "right" }}>Welcome, {firstname}!</p>

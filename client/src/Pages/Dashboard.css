@@ -1,3 +1,30 @@
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140vh;
+}
+
+.centered-expenses,
+.centered-incomes {
+  width: 40%;
+  padding: 1rem;
+  text-align: center;
+}
+
+.centered-expenses {
+  margin-right: 1rem;
+}
+
+.centered-incomes {
+  margin-left: 1rem;
+}
+
+
+
+
+/* 
+
 .expenses {
   width: 50%;
   height: 80vh;
@@ -8,4 +35,4 @@
   width: 50%;
   height: 80vh;
   float: right;
-}
+} */
