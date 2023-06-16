@@ -42,6 +42,7 @@ export const About = () => {
 
       <div className="about-us-content">
         <h1>About Us</h1>
+        <img className="img" src={img} alt="img" />
 
         {people.map((person, index) => (
           <div key={index} className="person-bio">
