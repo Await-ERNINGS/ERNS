@@ -217,34 +217,25 @@ export const Expense = () => {
         <tbody>
           {expense.map((row, index) => (
             <tr key={index}>
-
               <td>{row.date.slice(0, 10)}</td>
-
-
-              <td className="center-content">{row.date}</td>
-              <td className="center-content">{row.category}</td>
-              <td className="center-content">{(row.amount).toFixed(2)}</td>
+              <td className="center-content">{row.category_name}</td>
+              <td className="center-content">{row.amount}</td>
               <td className="center-content">{row.description}</td>
-              <td>{row.date}</td>
-
-              <td>{row.category_name}</td>
-              <td>{row.amount}</td>
-              <td>{row.description}</td>
 
               <td>
                 <div className="center-content">
-                <button
-                  className="small-button"
-                  onClick={() => handleEditRow(index)}
-                >
-                  Edit
-                </button>{" "}
-                <button
-                  className="small-button"
-                  onClick={() => handleDeleteRow(index, row.transaction_id)}
-                >
-                  Delete
-                </button>
+                  <button
+                    className="small-button"
+                    onClick={() => handleEditRow(index)}
+                  >
+                    Edit
+                  </button>{" "}
+                  <button
+                    className="small-button"
+                    onClick={() => handleDeleteRow(index, row.transaction_id)}
+                  >
+                    Delete
+                  </button>
                 </div>
               </td>
             </tr>
