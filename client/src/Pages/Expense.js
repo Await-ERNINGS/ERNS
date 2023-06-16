@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { Header } from "../Header";
 import { Footer } from "../Footer";
 import "./Expense.css";
@@ -51,9 +50,9 @@ export const Expense = () => {
   const handleAddExpense = () => {
     if (selectedCategory.trim() !== "" && categoryAmounts[selectedCategory]) {
       const newTableRow = {
-        date: categoryDates[selectedCategory] || "", // Use an empty string as fallback
+        date: categoryDates[selectedCategory] || "",
         category: selectedCategory,
-        amount: categoryAmounts[selectedCategory],
+        amount: parseFloat(categoryAmounts[selectedCategory]), // Parse amount as a number
         description: categoryDescriptions[selectedCategory],
       };
       if (selectedRow !== null) {
@@ -66,7 +65,7 @@ export const Expense = () => {
       }
     }
   };
-
+  
   const handleDeleteRow = (index) => {
     const updatedTableData = [...tableData];
     updatedTableData.splice(index, 1);
@@ -98,7 +97,6 @@ export const Expense = () => {
     setTotalAmount(total);
   };
 
-
   const handleVisualize = () => {
     navigate("/dashboard");
   };
@@ -106,7 +104,6 @@ export const Expense = () => {
   // const handleVisualizeClick = () => {
   //   navigate("/dashboard");
   // };
-
 
   return (
     <div>
@@ -120,28 +117,26 @@ export const Expense = () => {
       />
 
       <label htmlFor="category">Category:</label>
-      <label htmlFor="category">Category:</label>
-<select
-  id="category"
-  value={selectedCategory}
-  onChange={handleCategoryChange}
->
-  <option value="">-- Select Category --</option>
-  <option value="Housing">Housing (Rent or Own)</option>
-  <option value="Utilities">Utilities</option>
-  <option value="Transportation">Transportation</option>
-  <option value="Food">Food</option>
-  <option value="Entertainment">Entertainment</option>
-  <option value="Health">Health</option>
-  <option value="Education">Education</option>
-  <option value="Taxes">Taxes</option>
-  <option value="Personal Care">Personal Care</option>
-  <option value="Miscellaneous">Miscellaneous</option>
-  <option value="Clothing">Clothing</option>
-  <option value="Insurance">Insurance</option>
-  <option value="Debt Payment">Debt Payment</option>
-</select>
-
+      <select
+        id="category"
+        value={selectedCategory}
+        onChange={handleCategoryChange}
+      >
+        <option value="">-- Select Category --</option>
+        <option value="Housing">Housing (Rent or Own)</option>
+        <option value="Utilities">Utilities</option>
+        <option value="Transportation">Transportation</option>
+        <option value="Food">Food</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Health">Health</option>
+        <option value="Education">Education</option>
+        <option value="Taxes">Taxes</option>
+        <option value="Personal Care">Personal Care</option>
+        <option value="Miscellaneous">Miscellaneous</option>
+        <option value="Clothing">Clothing</option>
+        <option value="Insurance">Insurance</option>
+        <option value="Debt Payment">Debt Payment</option>
+      </select>
 
       <label htmlFor="description">Description:</label>
       <input
@@ -152,13 +147,15 @@ export const Expense = () => {
       />
 
       <label htmlFor="amount">Amount:</label>
+      <div className="amount-input-container">
+        <span className="currency-symbol">$</span>
       <input
         type="number"
         id="amount"
         value={categoryAmounts[selectedCategory] || ""}
         onChange={handleAmountChange}
       />
-
+  </div> 
       <div className="button-container">
         <button className="small-button" onClick={handleAddExpense}>
           {selectedRow !== null ? "Update Expense" : "Add Expense"}
@@ -172,7 +169,7 @@ export const Expense = () => {
             <th>Category</th>
             <th>Amount</th>
             <th>Description</th>
-            <th>Action</th>
+            <th>Edit / Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -180,7 +177,7 @@ export const Expense = () => {
             <tr key={index}>
               <td>{row.date}</td>
               <td>{row.category}</td>
-              <td>{row.amount}</td>
+              <td>{(row.amount).toFixed(2)}</td>
               <td>{row.description}</td>
               <td>
                 <button
@@ -189,7 +186,7 @@ export const Expense = () => {
                 >
                   Edit
                 </button>{" "}
-                {/* Add a space after the Edit button */}
+                
                 <button
                   className="small-button"
                   onClick={() => handleDeleteRow(index)}
@@ -202,8 +199,7 @@ export const Expense = () => {
         </tbody>
       </table>
 
-      <p>Total Amount: {totalAmount}</p>
-
+      <p>Total Amount: ${totalAmount.toFixed(2)}</p>
 
       <div className="button-container">
         <button className="small-button" onClick={handleVisualize}>
