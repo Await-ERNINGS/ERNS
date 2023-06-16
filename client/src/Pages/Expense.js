@@ -22,25 +22,17 @@ export const Expense = () => {
         const response = await axios.get(
           "http://localhost:5000/expense_transactions"
         );
-
         setExpense(response.data);
-
         console.log(response.data);
-
         setExpense(response.data);
-
         // const res = await fetch("http://localhost:5000/expense_transactions");
-
         // console.log(typeof res);
       } catch (error) {
         // Handle the error
-
         console.error(error);
       }
     };
-
     fetchExpense();
-
     updateTotalAmount();
   }, []);
 
@@ -79,7 +71,7 @@ export const Expense = () => {
       const newExpense = {
         date: categoryDates[selectedCategory] || "", // Use an empty string as fallback
 
-        category: selectedCategory,
+        category_name: selectedCategory,
 
         amount: categoryAmounts[selectedCategory],
 
@@ -102,11 +94,19 @@ export const Expense = () => {
     }
   };
 
-  const handleDeleteRow = (index) => {
-    const updatedTableData = [...tableData];
-    updatedTableData.splice(index, 1);
-    setTableData(updatedTableData);
-    setSelectedRow(null);
+  const handleDeleteRow = async (index, transaction_id) => {
+    // const updatedTableData = [...tableData];
+    // updatedTableData.splice(index, 1);
+    // setTableData(updatedTableData);
+    // setSelectedRow(null);
+
+    try {
+      await axios.delete(
+        `http://localhost:5000/delete_transaction/${transaction_id}`
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleEditRow = (index) => {
@@ -224,7 +224,7 @@ export const Expense = () => {
                 </button>{" "}
                 <button
                   className="small-button"
-                  onClick={() => handleDeleteRow(index)}
+                  onClick={() => handleDeleteRow(index, row.transaction_id)}
                 >
                   Delete
                 </button>
