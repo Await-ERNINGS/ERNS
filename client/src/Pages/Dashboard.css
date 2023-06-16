@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 140vh;
+  height: 135vh;
 }
 
 .centered-expenses,
@@ -13,16 +13,36 @@
 }
 
 .centered-expenses {
-  margin-right: 1rem;
+  margin-right: 2rem;
 }
 
 .centered-incomes {
-  margin-left: 1rem;
+  margin-left: 2rem;
 }
 
+h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: medium;
+  background-color: aquamarine;
+  border-radius: 20px;
+  padding: 10px;
+  width: fit-content;
+}
+h4 {
 
-
-
+  font-size: large;
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 20px;
+ 
+  height: 5vh;
+}
 /* 
 
 .expenses {

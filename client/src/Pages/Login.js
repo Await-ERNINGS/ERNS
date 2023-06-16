@@ -6,6 +6,7 @@ import { Header } from "../Header";
 import { Footer } from "../Footer";
 import { Logout } from "./Logout";
 
+
 const clientId = "909444633630-70jp9s6hngh7689ti0nmui954qr1tpub.apps.googleusercontent.com";
 
 export const Login = () => {
@@ -50,6 +51,7 @@ export const Login = () => {
         <main className="container">
           <div id="signInButton">
             <p>Saving Today, Smiling Tomorrow!!</p>
+            
             <GoogleLogin
               clientId={clientId}
               buttonText="Login"

@@ -25,26 +25,26 @@ export const Header = (props) => {
           </>
         ) : (
           <div className="login-header">
-            {location.pathname !== "/welcome" &&
+            {location.pathname !== "/" &&
               location.pathname !== "/login" &&
               location.pathname !== "/about" && (
                 <Link to="/dashboard">Dashboard</Link>
-              )}
-            {location.pathname !== "/welcome" &&
+                )}
+            {location.pathname !== "/" &&
               location.pathname !== "/login" &&
               location.pathname !== "/about" && (
                 <Link to="/expense">Expenses</Link>
-              )}
-            {location.pathname !== "/login" &&
-              location.pathname !== "/dashboard" &&
-              location.pathname !== "/expense" && (
-                <Link to="/login">Login</Link>
-              )}
-            <Link to="/welcome">Home</Link>
+                )}
+            <Link to="/">Home</Link>
             <br />
             {location.pathname !== "/about" && (
               <Link to="/about">About</Link>
-            )}
+              )}
+              {location.pathname !== "/login" &&
+                location.pathname !== "/dashboard" &&
+                location.pathname !== "/expense" && (
+                  <Link to="/login">Login</Link>
+                )}
 
           </div>
         )}

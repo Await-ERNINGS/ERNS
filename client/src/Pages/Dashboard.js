@@ -117,15 +117,15 @@ export const Dashboard = () => {
         <div className="centered-expenses">
           <h1>Expenses</h1>
           <Doughnut data={expenseData} />
-          <h1>Total Expenses: {totalExpense}</h1>
+          <h2>Total Expenses: {totalExpense}</h2>
         </div>
         <div className="centered-incomes">
           <h1>Incomes</h1>
           <Doughnut data={incomeData} />
-          <h1>Total Incomes: {totalIncome}</h1>
+          <h2>Total Incomes: {totalIncome}</h2>
         </div>
       </div>
-      <h1>Total Saving: {totalSaving}</h1>
+      <h4>Total Saving: {totalSaving}</h4>
       {/* <button onClick={handleExpenseClick}>Expenses</button> */}
       <Footer />
       <Logout />
