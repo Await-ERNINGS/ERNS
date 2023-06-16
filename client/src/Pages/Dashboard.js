@@ -41,20 +41,27 @@ export const Dashboard = () => {
   // const expenseAmounts = expenses.map((expense) => expense.amount);
   const expenseCategories = expenses.map((expense) => expense.category_name);
   const expenseAmount = expenses.map((expense) => expense.total_amount);
+  const totalExpense = expenses.reduce((accumulator, currentValue) => {
+    return accumulator + Number(currentValue.total_amount);
+  }, 0);
   // console.log(expenses);
   // console.log(expenseCategories);
   // console.log(expenseAmount);
   const incomeCategories = incomes.map((income) => income.category_name);
   const incomeAmount = incomes.map((income) => income.total_amount);
+  const totalIncome = incomes.reduce((accumulator, currentValue) => {
+    return accumulator + Number(currentValue.total_amount);
+  }, 0);
   // const incomes = transaction.filter((trans) => trans.type === "Income");
   // const incomeDescriptions = incomes.map((income) => income.description);
   // const incomeAmounts = incomes.map((income) => income.amount);
+  const totalSaving = totalIncome - totalExpense;
 
   const expenseData = {
     labels: expenseCategories,
     datasets: [
       {
-        label: "Amount",
+        label: "Amount in $",
         data: expenseAmount,
         backgroundColor: [
           //blue
@@ -91,7 +98,7 @@ export const Dashboard = () => {
     labels: incomeCategories,
     datasets: [
       {
-        label: "Amount",
+        label: "Amount in $",
         data: incomeAmount,
         backgroundColor: [
           "rgba(255, 99, 132, 1)",
@@ -109,7 +116,6 @@ export const Dashboard = () => {
           "rgba(153, 102, 255, 1)",
           "rgba(255, 159, 64, 1)",
         ],
-        borderWidth: 5,
       },
     ],
   };
@@ -121,12 +127,15 @@ export const Dashboard = () => {
         <div className="expenses">
           <h1>Expenses</h1>
           <Doughnut data={expenseData} />
+          <h1>Total Expenses : {totalExpense}</h1>
         </div>
         <div className="incomes">
           <h1>Incomes</h1>
           <Doughnut data={incomeData} />
+          <h1>Total Incomes : {totalIncome}</h1>
         </div>
       </div>
+      <h1>Total Saving : {totalSaving}</h1>
       <Footer />
     </div>
   );
