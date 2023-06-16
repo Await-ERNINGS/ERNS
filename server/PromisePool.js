@@ -4,7 +4,7 @@ exports.promisePool = mysql
   .createPool({
     host: "localhost",
     user: "root",
-    password: "Whddnjs92!",
+    password: "****",
     database: "ern$",
   })
   .promise();
