@@ -160,27 +160,31 @@ app.get("/income", cors(corsOptions), async (req, res) => {
 });
 
 //Get total income by category.....Tested in Portman
- app.get('/incomebycategory', cors(corsOptions), async(req, res) =>{
-  const [ incomebycategory ] = await promisePool.query(
+app.get("/incomebycategory", cors(corsOptions), async (req, res) => {
+  const [incomebycategory] = await promisePool.query(
     `SELECT c.category_id, c.category_name, SUM(t.amount) AS total_amount
     FROM transaction t
     JOIN category c ON t.category_id = c.category_id
     WHERE t.type = 'income'
     GROUP BY c.category_id, c.category_name
-    ORDER BY total_amount;`);
-    res.send( incomebycategory );  
-  });
- //Get total expenses by category.....Tested in Portman
- app.get('/expensebycategory', cors(corsOptions), async(req, res) =>{
-  const [ expensebycategory ] = await promisePool.query(
+    ORDER BY total_amount;`
+  );
+
+  res.send(incomebycategory);
+});
+//Get total expenses by category.....Tested in Portman
+app.get("/expensebycategory", cors(corsOptions), async (req, res) => {
+  const [expensebycategory] = await promisePool.query(
     `SELECT c.category_id, c.category_name, SUM(t.amount) AS total_amount
     FROM transaction t
     JOIN category c ON t.category_id = c.category_id
     WHERE t.type = 'expense'
     GROUP BY c.category_id, c.category_name
-    ORDER BY total_amount;`);
-    res.send( expensebycategory );  
-  });
+    ORDER BY total_amount;`
+  );
+  console.log(expensebycategory);
+  res.send(expensebycategory);
+});
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
