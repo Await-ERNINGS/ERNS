@@ -86,11 +86,13 @@ export const Expense = () => {
 
           newExpense
         );
-
         console.log(response.data);
       } catch (error) {
         console.log(error);
       }
+      const updatedExpense = [...expense];
+      updatedExpense.push(newExpense);
+      setExpense(updatedExpense);
     }
   };
 
@@ -107,6 +109,10 @@ export const Expense = () => {
     } catch (error) {
       console.log(error);
     }
+
+    const updatedExpense = [...expense];
+    updatedExpense.splice(index, 1);
+    setExpense(updatedExpense);
   };
 
   const handleEditRow = (index) => {
@@ -211,7 +217,7 @@ export const Expense = () => {
         <tbody>
           {expense.map((row, index) => (
             <tr key={index}>
-              <td>{row.date}</td>
+              <td>{row.date.slice(0, 10)}</td>
               <td>{row.category_name}</td>
               <td>{row.amount}</td>
               <td>{row.description}</td>
