@@ -5,6 +5,8 @@ import Ethan from "./images/Ethan.png";
 import Reid from "./images/Reid.png";
 import Nicole from "./images/Nicole.png";
 import Samira from "./images/Samira.png";
+import img from "./images/img.jpg"
+import "./About.css"
 
 export const About = () => {
   const people = [
@@ -40,6 +42,7 @@ export const About = () => {
 
       <div className="about-us-content">
         <h1>About Us</h1>
+        <img className="img" src={img} alt="img" />
 
         {people.map((person, index) => (
           <div key={index} className="person-bio">

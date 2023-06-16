@@ -7,7 +7,7 @@
 
 .centered-expenses,
 .centered-incomes {
-  width: 40%;
+  width: 35%;
   padding: 1rem;
   text-align: center;
 }
@@ -29,30 +29,35 @@ h2 {
   border-radius: 20px;
   padding: 10px;
   width: fit-content;
+  margin: auto;
+  margin-top: 3rem; /* Add margin to create space between the circles and h2 */
 }
-h4 {
 
-  font-size: large;
-  background-color: green;
+h4 {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: large;
+  background-color: green;
   padding: 10px;
   width: fit-content;
   border-radius: 20px;
- 
-  height: 5vh;
-}
-/* 
-
-.expenses {
-  width: 50%;
-  height: 80vh;
-  float: left;
+  margin-top: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: rem; /* Adjust this value as needed */
 }
 
-.incomes {
-  width: 50%;
-  height: 80vh;
-  float: right;
-} */
+/* Responsive Styles */
+
+
+  h2 {
+    font-size: 1rem;
+    padding: 5px;
+  }
+
+  h4 {
+    font-size: 0.8rem;
+    padding: 5px;
+  }
+

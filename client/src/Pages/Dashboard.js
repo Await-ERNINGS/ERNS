@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { Header } from "../Header";
 import { Footer } from "../Footer";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { Logout } from "./Logout";
+
 import "./Dashboard.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -128,7 +128,6 @@ export const Dashboard = () => {
       <h4>Total Saving: {totalSaving}</h4>
       {/* <button onClick={handleExpenseClick}>Expenses</button> */}
       <Footer />
-      <Logout />
     </div>
   );
 };
