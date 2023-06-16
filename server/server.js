@@ -72,14 +72,15 @@ app.get("/income_transactions", cors(corsOptions), async (req, res) => {
 //Add a transaction.......
 //Format............http://localhost:5000/add_transaction/
 app.post("/add_transaction/", cors(corsOptions), async (req, res) => {
-  const { date, type, amount, description, category } = req.body;
-  console.log(req.body);
-  console.log(category);
+  const { date, type, amount, description, category_name } = req.body;
+  // console.log("req.body", req.body);
+  // console.log(category_name);
   const [transactions] = await promisePool.query(
     `INSERT INTO transaction 
   (date, type, amount, description, category_name) VALUES (?, ?, ?, ?, ?)`,
-    [date, type, amount, description, category]
+    [date, type, amount, description, category_name]
   );
+
   res.send(transactions);
 });
 
@@ -110,7 +111,6 @@ app.put("/update_transaction/:id", cors(corsOptions), async (req, res) => {
   console.log(transactions);
   res.send(transactions);
 });
-
 
 //Update or Add a description....
 //Format....http://localhost:5000/update_description/11/Tesla Stock
