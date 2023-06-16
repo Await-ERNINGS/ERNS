@@ -22,55 +22,75 @@ app.get("/test", cors(corsOptions), async (req, res) => {
   res.send(test);
 });
 
-//Request all transactions between two dates.
+//Request all transactions between two dates.....Tested in Portman
+//Format......http://localhost:5000/transactions/?date1=2023-06-01&date2=2023-06-31
 app.get("/transactions/", cors(corsOptions), async (req, res) => {
-  const dateFrom = req.params.date1;
-  const dateTo = req.params.date2;
+  const dateFrom = new Date(req.query.date1);
+  const dateTo = new Date(req.query.date2);
+  console.log(dateTo);
+  console.log(dateFrom);
   const [transactions] = await promisePool.query(
     "SELECT * FROM transaction WHERE DATE BETWEEN ? AND ?",
     [dateFrom, dateTo]
   );
-  res.send(transactions);
+  console.log(transactions);
+  res.send([transactions]);
 });
 
 //Request transactions for a specific date.
+//Format.....http://localhost:5000/transactions/2023-06-01
 app.get("/transactions/:date", cors(corsOptions), async (req, res) => {
   const date = req.params.date;
+  console.log(req.params.date);
+  console.log(date);
   const [transactions] = await promisePool.query(
     "SELECT * FROM transaction WHERE DATE = ?",
-    [date]
+    date
   );
+  console.log(transactions);
   res.send(transactions);
 });
 
-//Request transactions by expenses
-app.get("/transactions/expenses", cors(corsOptions), async (req, res) => {
+//Request transactions by expenses.......Tested by Portman
+//Format.....http://localhost:5000/expensetransactions
+app.get("/expensetransactions", cors(corsOptions), async (req, res) => {
   const [transactions] = await promisePool.query(
     "SELECT * FROM transaction WHERE type = 'expense'"
   );
   res.send(transactions);
 });
 
-//Request transactions by income....
-app.get("/transactions/income", cors(corsOptions), async (req, res) => {
+//Request transactions by income....Tested by Portman
+//Format..........http://localhost:5000/incometransactions
+app.get("/incometransactions", cors(corsOptions), async (req, res) => {
   const [transactions] = await promisePool.query(
     "SELECT * FROM transaction WHERE type = 'income'"
   );
   res.send(transactions);
 });
 
-//Add a transaction
-app.post("/transaction/", cors(corsOptions), async (req, res) => {
+//Add a transaction.......Tested in Portman
+//Format............http://localhost:5000/addtransaction/
+app.post("/addtransaction/", cors(corsOptions), async (req, res) => {
   const { date, type, amount, description, category } = req.body;
-  const [transactions] = await promisePool.query(
-    "INSERT INTO transaction (date, type, amount, description, category_id) VALUES (?, ?, ?, ?, ?)",
-    [date, type, amount, description, category]
+  console.log(req.body);
+  console.log(category);
+  const [categoryID] = await promisePool.query(
+    "SELECT category_id FROM category WHERE category_name = ?",
+    [category]
+  );
+  console.log(categoryID);  
+  const cat_id = categoryID[0].category_id;
+  const [transactions] = await promisePool.query(`INSERT INTO transaction 
+  (date, type, amount, description, category_id) VALUES (?, ?, ?, ?, ?)`,
+  [date, type, amount, description, cat_id]
   );
   res.send(transactions);
 });
 
-//Delete a transaction
-app.delete("/transaction/:id", cors(corsOptions), async (req, res) => {
+//Delete a transaction....Tested in Postman
+//Format.....http://localhost:5000/deletetransaction/11
+app.delete("/deletetransaction/:id", cors(corsOptions), async (req, res) => {
   const id = req.params.id;
   const [transactions] = await promisePool.query(
     "DELETE FROM transaction WHERE transaction_id = ?",
@@ -81,7 +101,7 @@ app.delete("/transaction/:id", cors(corsOptions), async (req, res) => {
 
 //Update a transaction.....
 app.put("/transaction/:id", cors(corsOptions), async (req, res) => {
-  const id = req.params.id;
+  const id = req.body.id
   const { date, type, amount, description, category } = req.body;
   const [transactions] = await promisePool.query(
     "UPDATE transaction SET date = ?, type = ?, amount = ?, description = ?, category_id = ? WHERE transaction_id = ?",
@@ -125,7 +145,7 @@ app.put("/category/:id/:name", cors(corsOptions), async (req, res) => {
 //Update or Add a description....
 app.put("/description/:id", cors(corsOptions), async (req, res) => {
   const id = req.params.id;
-  const description = req.params.description;
+  const description = req.body.description;
   const [descriptionUpdate] = await promisePool.query(
     "UPDATE transaction SET description = ? WHERE transaction_id = ?",
     [description, id]
@@ -143,7 +163,8 @@ app.put("/type/", cors(corsOptions), async (req, res) => {
   );
   res.send(typeUpdate);
 });
-//Get total expenses....
+//Get total expenses....Tested in Postman
+//Format......http://localhost:5000/expenses
 app.get("/expenses", cors(corsOptions), async (req, res) => {
   const [expenses] = await promisePool.query(
     "SELECT SUM(amount) FROM transaction WHERE type = 'expense'"
@@ -151,7 +172,8 @@ app.get("/expenses", cors(corsOptions), async (req, res) => {
   res.send(expenses);
 });
 
-//get total income....
+//get total income....Tested in Postman
+//Format.....http://localhost:5000/income
 app.get("/income", cors(corsOptions), async (req, res) => {
   const [income] = await promisePool.query(
     "SELECT SUM(amount) FROM transaction WHERE type = 'income'"
@@ -160,27 +182,31 @@ app.get("/income", cors(corsOptions), async (req, res) => {
 });
 
 //Get total income by category.....Tested in Portman
- app.get('/incomebycategory', cors(corsOptions), async(req, res) =>{
-  const [ incomebycategory ] = await promisePool.query(
+//Format..........http://localhost:5000/incomebycategory
+app.get("/incomebycategory", cors(corsOptions), async (req, res) => {
+  const [incomebycategory] = await promisePool.query(
     `SELECT c.category_id, c.category_name, SUM(t.amount) AS total_amount
     FROM transaction t
     JOIN category c ON t.category_id = c.category_id
     WHERE t.type = 'income'
     GROUP BY c.category_id, c.category_name
-    ORDER BY total_amount;`);
-    res.send( incomebycategory );  
-  });
- //Get total expenses by category.....Tested in Portman
- app.get('/expensebycategory', cors(corsOptions), async(req, res) =>{
-  const [ expensebycategory ] = await promisePool.query(
+    ORDER BY total_amount;`
+  );
+  res.send(incomebycategory);
+});
+//Get total expenses by category.....Tested in Portman
+//Format...........http://localhost:5000/expensebycategory
+app.get("/expensebycategory", cors(corsOptions), async (req, res) => {
+  const [expensebycategory] = await promisePool.query(
     `SELECT c.category_id, c.category_name, SUM(t.amount) AS total_amount
     FROM transaction t
     JOIN category c ON t.category_id = c.category_id
     WHERE t.type = 'expense'
     GROUP BY c.category_id, c.category_name
-    ORDER BY total_amount;`);
-    res.send( expensebycategory );  
-  });
+    ORDER BY total_amount;`
+  );
+  res.send(expensebycategory);
+});
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
