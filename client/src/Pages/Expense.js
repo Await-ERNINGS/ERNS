@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../Header";
 import { Footer } from "../Footer";
-<<<<<<< HEAD
 
-=======
->>>>>>> 58ecff055e49470263a3097e9757fe221fcbc07a
 import "./Expense.css";
 
 export const Expense = () => {

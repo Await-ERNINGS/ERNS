@@ -5,6 +5,8 @@ import Ethan from "./images/Ethan.png";
 import Reid from "./images/Reid.png";
 import Nicole from "./images/Nicole.png";
 import Samira from "./images/Samira.png";
+import img from "./images/img.jpg"
+import "./About.css"
 
 export const About = () => {
   const people = [

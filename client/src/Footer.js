@@ -10,7 +10,7 @@ export const Footer = () => {
         </div>
         <div className="right-content">
           <p>
-            &copy; {new Date().getFullYear()} Your Website. All rights
+            &copy; {new Date().getFullYear()} Copyright. All rights
             reserved.
           </p>
         </div>

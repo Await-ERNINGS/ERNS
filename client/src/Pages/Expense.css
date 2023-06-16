@@ -68,7 +68,7 @@ button:hover {
 
 /* Additional styling can be added as needed */
 .small-button {
-<<<<<<< HEAD
+
     font-size: 12px;
     padding: 5px 10px;
   }
@@ -83,9 +83,6 @@ button:hover {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-  }
-
-=======
   font-size: 12px;
   padding: 5px 10px;
 }
@@ -111,4 +108,4 @@ button:hover {
   font-size: 16px;
   margin-right: 5px;
 }
->>>>>>> 58ecff055e49470263a3097e9757fe221fcbc07a
+
