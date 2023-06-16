@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { GoogleLogin } from "react-google-login";
+import { useNavigate } from "react-router-dom";
 import { Header } from "../Header";
 import { Footer } from "../Footer";
 import { Logout } from "./Logout";
 
-const clientId =
-  "909444633630-70jp9s6hngh7689ti0nmui954qr1tpub.apps.googleusercontent.com";
+const clientId = "909444633630-70jp9s6hngh7689ti0nmui954qr1tpub.apps.googleusercontent.com";
 
 export const Login = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [firstname, setFirstname] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedIn) {
+      navigate("/dashboard"); // Redirect to "/dashboard" when logged in
+    }
+  }, [loggedIn, navigate]);
 
   const onSuccess = (res) => {
     setLoggedIn(true);
@@ -23,7 +30,6 @@ export const Login = () => {
     console.log("Login Failed! res:", res);
   };
 
-  // Render different content based on login state
   if (loggedIn) {
     return (
       <div className="login-page">
@@ -31,10 +37,9 @@ export const Login = () => {
         <main className="container">
           <div id="loggedInContent">
             <h3>Don't save what is left after spending; spend what is left after saving!</h3>
-           
           </div>
         </main>
-        <Logout />
+        <Logout /> {/* Include the Logout component */}
         <Footer />
       </div>
     );
@@ -52,7 +57,9 @@ export const Login = () => {
               onFailure={onFailure}
               cookiePolicy={"single_host_origin"}
               isSignedIn={true}
+              prompt="select_account" // Include the prompt prop with value 'select_account'
             />
+     
           </div>
         </main>
         <Footer />

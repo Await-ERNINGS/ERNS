@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { Header } from "../Header";
 import { Footer } from "../Footer";
 import "./Expense.css";
@@ -137,7 +138,7 @@ export const Expense = () => {
       <p>Total Amount: {totalAmount}</p>
 
       <button onClick={handleVisualizeClick}>Visualize</button>
-
+    
       <Footer />
     </div>
   );

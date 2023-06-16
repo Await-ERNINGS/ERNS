@@ -7,6 +7,7 @@ import { Welcome } from "./Pages/Welcome";
 import { Dashboard } from "./Pages/Dashboard";
 import { Logout } from "./Pages/Logout";
 import { Expense } from "./Pages/Expense"
+import { About } from "./About";
 
 const clientId =
   "909444633630-70jp9s6hngh7689ti0nmui954qr1tpub.apps.googleusercontent.com";
@@ -46,16 +47,11 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/login" element={<Login />} />
-
-
-     
-
             <Route path="/signup" element={<Logout />} />
-
             <Route path="/dashboard" element={<Dashboard />} />
-
             <Route path="/logout" element={<Logout />} />
             <Route path="/expense" element={<Expense/>}/>
+            <Route path="/about" element={<About/>}/>
           </Routes>
         </header>
         <div>{/* Add any other components or content here */}</div>

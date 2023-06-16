@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Header } from "../Header";
 import { Footer } from "../Footer";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { Logout } from "./Logout";
 import "./Dashboard.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -10,6 +12,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export const Dashboard = () => {
   const [expenses, setExpenses] = useState([]);
   const [incomes, setIncomes] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchExpenses = async () => {
@@ -104,6 +107,9 @@ export const Dashboard = () => {
     ],
   };
 
+  const handleExpenseClick = () => {
+    navigate("/expense");
+  };
   return (
     <div>
       <Header />
@@ -120,7 +126,9 @@ export const Dashboard = () => {
         </div>
       </div>
       <h1>Total Saving: {totalSaving}</h1>
+      <button onClick={handleExpenseClick}>Expenses</button>
       <Footer />
+      <Logout />
     </div>
   );
 };
