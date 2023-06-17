@@ -113,6 +113,7 @@ export const Dashboard = () => {
   return (
     <div>
       <Header />
+        <h1>Summary Chart</h1>
       <div className="centered">
         <div className="centered-expenses">
           <h1>Expenses</h1>

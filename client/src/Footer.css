@@ -1,5 +1,6 @@
 .footer {
   flex-direction: row;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -7,7 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: small;
+  font-size: x-small;
   max-width: 100%;
   background-color: transparent !important;
 }
@@ -24,9 +25,9 @@
 }
 
 .footer .right-content {
-  margin-left: auto; /* Push the right content to the right */
+  margin-left: auto;
 }
 
 .footer .left-content {
-  margin-right: auto; /* Push the left content to the left */
+  margin-right: auto;
 }
