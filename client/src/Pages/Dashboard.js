@@ -9,7 +9,7 @@ import "./Dashboard.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const Dashboard = () => {
+export const Dashboard = (props) => {
   const [expenses, setExpenses] = useState([]);
   const [incomes, setIncomes] = useState([]);
   // const navigate = useNavigate();
@@ -113,6 +113,7 @@ export const Dashboard = () => {
   return (
     <div>
       <Header />
+     
         <h1>Summary Chart</h1>
       <div className="centered">
         <div className="centered-expenses">

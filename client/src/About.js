@@ -17,7 +17,7 @@ export const About = () => {
         {/* <img className="img" src={img} alt="img" /> */}
 
         <section className="testimonials-section">
-        <p>Welcome to our page!</p>
+        <p className="Welcome-message">Welcome to our page!</p>
           <div className="container">
             
             <ul>
