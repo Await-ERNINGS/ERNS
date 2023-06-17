@@ -242,7 +242,7 @@ export const Expense = () => {
       <p>Total Amount: ${totalAmount.toFixed()}</p>
 
       <div className="button-container">
-        <button className="small-button" onClick={handleVisualize}>
+        <button className="visualize-button" onClick={handleVisualize}>
           Visualize
         </button>
       </div>

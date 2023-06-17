@@ -193,15 +193,13 @@ export const Income = () => {
       <p>Total Amount: ${totalAmount.toFixed(2)}</p>
 
       <div className="button-container">
-        <button className="small-button" onClick={handleVisualize}>
+        <button className="visualize-button" onClick={handleVisualize}>
           <div className="coin-stack"></div>
           Visualize
         </button>
       </div>
       {/* <span class="money"></span> */}
       
-
-
       <Footer />
     </div>
   );

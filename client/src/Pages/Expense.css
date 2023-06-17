@@ -12,7 +12,7 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  margin-bottom: 150px;
 }
 
 th,
@@ -28,11 +28,12 @@ th {
 }
 
 /* Total Amount Style */
+
 .total-amount {
   margin-top: 20px;
+  margin-bottom: 20px; /* Adjust as needed */
   font-weight: bold;
 }
-
 /* Optional: Adjust the styling of the form elements based on your design */
 
 /* Example styling for input elements */
@@ -81,24 +82,17 @@ button:hover {
     padding: 5px 10px;
   }
   
-  .total-amount {
-    margin-top: 20px;
-    margin-bottom: 10px; /* Adjust as needed */
-    font-weight: bold;
+  .visualize-button {
+    font-size: 12px;
+    margin-bottom: 150px;
+    padding: 5px 10px;
   }
-  
   .button-container {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
   font-size: 12px;
   padding: 5px 10px;
-}
-
-.total-amount {
-  margin-top: 20px;
-  margin-bottom: 10px; /* Adjust as needed */
-  font-weight: bold;
 }
 
 .button-container {
@@ -143,4 +137,3 @@ th {
 text-align: center;
 
 }
-
