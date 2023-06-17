@@ -35,7 +35,7 @@ export const Login = () => {
     return (
       <div className="login-page">
         <Header loggedIn={loggedIn} firstname={firstname} />
-        <main className="container">
+        <main className="containers">
           <div id="loggedInContent">
             <h3>Don't save what is left after spending; spend what is left after saving!</h3>
           </div>
@@ -48,7 +48,7 @@ export const Login = () => {
     return (
       <div className="login-page">
         <Header loggedIn={loggedIn} firstname={firstname} />
-        <main className="container">
+        <main className="containers">
           <div id="signInButton">
             <p>Saving Today, Smiling Tomorrow!!</p>
             

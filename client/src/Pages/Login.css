@@ -1,8 +1,8 @@
-.container {
+.containers {
   background-image: url('../images/city.jpg') ;
   background-size: cover;
-  animation: moveBackground 15s linear infinite;
-  height: 100vh;
+  animation: moveBackground 20s linear infinite;
+  height: 120vh;
   width: 100vw;
 }
 
