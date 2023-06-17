@@ -71,20 +71,15 @@ export const Expense = () => {
     if (selectedCategory.trim() !== "" && categoryAmounts[selectedCategory]) {
       const newExpense = {
         date: categoryDates[selectedCategory] || "", // Use an empty string as fallback
-
         category_name: selectedCategory,
-
         amount: categoryAmounts[selectedCategory],
-
         description: categoryDescriptions[selectedCategory],
-
         type: "Expense",
       };
 
       try {
         const response = await axios.post(
           "http://localhost:5000/add_transaction/",
-
           newExpense
         );
         console.log(response.data);
