@@ -1,7 +1,7 @@
 .footer {
   flex-direction: row;
-  position: fixed;
-  bottom: 0;
+  position: relative;
+  bottom: 20px;
   left: 0;
   width: 100%;
   padding: 0;

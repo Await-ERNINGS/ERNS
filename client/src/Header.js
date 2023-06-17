@@ -17,7 +17,7 @@ export const Header = (props) => {
         </p>
         {isLoggedin ? (
           <>
-            <p style={{ textAlign: "right" }}>Welcome, {firstname}!</p>
+            <p className="greeting" style={{ textAlign: "right" }}>Welcome, {firstname}!</p>
             {location.pathname !== "/" && (
               <Link to="/" className="home-link">
                 Home
