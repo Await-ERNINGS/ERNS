@@ -68,8 +68,14 @@ export const About = () => {
               <li>
                 <img src={Samira} alt="Samira" />
                 <blockquote>
-                  "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor "
+                  "I am a software engineer with a proven track record of
+                  delivering exceptional results. With a strong foundation in
+                  computer science and information technology, I possess the
+                  skills necessary to excel in designing and developing robust
+                  software solutions. Introducing ERN$, our revolutionary
+                  expense tracking and savings app. With a user-centric
+                  approach, ERN$ empowers individuals to effortlessly manage
+                  their finances, track expenses, set budgets, and save money."
                 </blockquote>
                 <cite>- Samira Boudjemai</cite>
               </li>
