@@ -7,17 +7,22 @@ body {
   background-image: url('../images/city.jpg') ;
   background-size: cover;
   animation: moveBackground 15s linear infinite;
-  height: 150vh;
+  height: 125vh;
   width: 100vw;
+  margin-top: 0;
   text-align: center;
 ;
 }
 
 .welcome {
-  margin: 0;
+  margin: 5px;
+
 }
 
 img {
-  height: 150px;
+  height: 100px;
   width: 200px;
+}
+h1 {
+  margin-top:0;
 }

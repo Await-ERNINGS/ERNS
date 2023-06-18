@@ -43,14 +43,14 @@ const MyCarousel = () => {
     <div style={{ textAlign: "center" }}>
       <div
         style={{
-          padding: "0 20px",
+          padding: "0 0px 0 60px",
         }}
       >
         <Carousel
           data={data}
           time={3000}
-          width="850px"
-          height="500px"
+          width="800px"
+          height="410px"
           captionStyle={captionStyle}
           radius="10px"
           slideNumber={true}
@@ -68,7 +68,7 @@ const MyCarousel = () => {
             textAlign: "center",
             maxWidth: "850px",
             maxHeight: "200px",
-            margin: "40px auto",
+            margin: "5px auto",
           }}
         >
           {data.map((item, index) => (

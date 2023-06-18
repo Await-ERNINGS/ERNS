@@ -13,7 +13,7 @@ export const About = () => {
       <Header />
 
       <div className="about-us-content">
-        <h1>About Us</h1>
+        <h1 className="aboutus">About Us</h1>
         {/* <img className="img" src={img} alt="img" /> */}
 
         <section className="testimonials-section">
@@ -37,8 +37,23 @@ export const About = () => {
               <li>
                 <img src={Reid} alt="Reid" />
                 <blockquote>
-                  "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor "
+                  "I am Reid, a proud United States Marine veteran. In the
+                  Marines, I learned the importance of persistence and the
+                  ability to improvise, adapt, and overcome challenges. These
+                  qualities have shaped my approach as a backend engineer and
+                  developer for this project. With a Bachelor's Degree in
+                  Computer Science from Rutgers University, I bring a strong
+                  foundation in coding and a passion for technology. As the
+                  backend engineer, I ensure the smooth functioning of the
+                  application's infrastructure, data management, and
+                  connectivity. Connect with me on LinkedIn and Facebook to stay
+                  in touch. I'm always open to engaging with fellow
+                  professionals and contributing to the tech community. Together
+                  with our talented team, we've created ERN$, a powerful and
+                  user-friendly financial management application. I'm here to
+                  help you take control of your personal finances and achieve
+                  your financial goals. Let's persist, improvise, adapt, and
+                  overcome any challenges that come our way."
                 </blockquote>
                 <cite>- Reid</cite>
               </li>
