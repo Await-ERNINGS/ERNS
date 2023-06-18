@@ -25,11 +25,12 @@ export const About = () => {
                 <blockquote>
                   "Hello, I'm Ethan, a dedicated and experienced full-stack
                   developer with a background as an Army Reservist. I'm proud to
-                  introduce is our expense tracking and savings application.
-                  Designed with the goal of helping individuals manage their
-                  finances effectively, our application provides a comprehensive
-                  solution for tracking expenses, setting budgets, and saving
-                  money."
+                  introduce our expense tracking and savings application called
+                  ERN$. Designed with the goal of helping individuals manage
+                  their finances effectively, our application provides a
+                  comprehensive solution for tracking expenses, setting budgets,
+                  and saving money. Please enjoy and feel free to reach out to
+                  us with any questions!"
                 </blockquote>
                 <cite>- Ethan Lee</cite>
               </li>
