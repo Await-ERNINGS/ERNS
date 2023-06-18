@@ -2,22 +2,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 110vh;
+  height: 80vh;
 }
 
 .centered-expenses,
 .centered-incomes {
-  width: 35%;
-  padding: 3rem;
+  padding: 5rem;
   text-align: center;
 }
 
 .centered-expenses {
   margin-right: 2rem;
+  width: 27.5%;
 }
 
 .centered-incomes {
   margin-left: 2rem;
+  width: 25.4%;
 }
 
 h2 {
@@ -47,7 +48,7 @@ h4 {
   margin-top: 5rem;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
 }
 
 /* Responsive Styles */
@@ -55,7 +56,7 @@ h4 {
 
   h2 {
     font-size: 1rem;
-    padding: 5px;
+    padding: 2px;
   }
 
   h4 {
@@ -63,7 +64,9 @@ h4 {
     padding: 5px;
   }
   h1{
-    padding-top: 30px;
+    padding-top: 0;
+    margin-bottom: 0;
+    font-size: 150%;
   }
   /* .greeting {
     color:black;
@@ -71,3 +74,10 @@ h4 {
     margin-top: 10px;
     margin-right: 10px;
   } */
+.incomes,.expenses {
+  font-size:140%;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 5px;
+}

@@ -103,6 +103,8 @@ export const Dashboard = (props) => {
           "rgba(153, 102, 255, 1)",
           "rgba(255, 159, 64, 1)",
         ],
+        borderWidth: 2,
+        spacing: 0,
       },
     ],
   };
@@ -117,12 +119,12 @@ export const Dashboard = (props) => {
         <h1>Summary Chart</h1>
       <div className="centered">
         <div className="centered-expenses">
-          <h1>Expenses</h1>
+          <h1 className="expenses">Expenses</h1>
           <Doughnut data={expenseData} />
           <h2>Total Expenses: {totalExpense}</h2>
         </div>
         <div className="centered-incomes">
-          <h1>Incomes</h1>
+          <h1 className="incomes">Incomes</h1>
           <Doughnut data={incomeData} />
           <h2>Total Incomes: {totalIncome}</h2>
         </div>
