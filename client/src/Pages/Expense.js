@@ -93,11 +93,6 @@ export const Expense = () => {
   };
 
   const handleDeleteRow = async (index, transaction_id) => {
-    // const updatedTableData = [...tableData];
-    // updatedTableData.splice(index, 1);
-    // setTableData(updatedTableData);
-    // setSelectedRow(null);
-
     try {
       await axios.delete(
         `http://localhost:5000/delete_transaction/${transaction_id}`
@@ -130,7 +125,7 @@ export const Expense = () => {
   };
 
   const updateTotalAmount = () => {
-    const amounts = tableData.map((row) => parseFloat(row.amount));
+    const amounts = expense.map((row) => parseFloat(row.amount));
     const total = amounts.reduce((acc, cur) => acc + cur, 0);
     setTotalAmount(total);
   };
@@ -239,7 +234,7 @@ export const Expense = () => {
         </tbody>
       </table>
 
-      <p>Total Amount: ${totalAmount.toFixed()}</p>
+      <p>Total Amount: ${totalAmount.toFixed(2)}</p>
 
       <div className="button-container">
         <button className="visualize-button" onClick={handleVisualize}>

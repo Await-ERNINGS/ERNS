@@ -3,6 +3,7 @@ import { Header } from "../Header";
 import { Footer } from "../Footer";
 import { useNavigate } from "react-router-dom";
 import "./Income.css";
+import axios from "axios";
 
 export const Income = () => {
   const [selectedJob, setSelectedJob] = useState("");
@@ -13,9 +14,27 @@ export const Income = () => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [selectedRow, setSelectedRow] = useState(null);
 
+  const [incomes, setIncomes] = useState([]);
+
   useEffect(() => {
+    const fetchIncome = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/income_transactions"
+        );
+        setIncomes(response.data);
+        console.log(response.data);
+        setIncomes(response.data);
+        // const res = await fetch("http://localhost:5000/expense_transactions");
+        // console.log(typeof res);
+      } catch (error) {
+        // Handle the error
+        console.error(error);
+      }
+    };
+    fetchIncome();
     updateTotalAmount();
-  }, [tableData]);
+  }, []);
 
   const navigate = useNavigate();
 
@@ -47,30 +66,42 @@ export const Income = () => {
     }));
   };
 
-  const handleAddIncome = () => {
+  const handleAddIncome = async () => {
     if (selectedJob.trim() !== "" && jobAmounts[selectedJob]) {
-      const newTableRow = {
+      const newIncome = {
         date: jobDates[selectedJob] || "", // Use an empty string as fallback
-        job: selectedJob,
+        category_name: selectedJob,
         description: jobDescriptions[selectedJob],
         amount: parseFloat(jobAmounts[selectedJob]),
+        type: "income",
       };
-      if (selectedRow !== null) {
-        const updatedTableData = [...tableData];
-        updatedTableData[selectedRow] = newTableRow;
-        setTableData(updatedTableData);
-        setSelectedRow(null);
-      } else {
-        setTableData((prevTableData) => [...prevTableData, newTableRow]);
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/add_transaction/",
+          newIncome
+        );
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
       }
+      const updatedIncome = [...incomes];
+      updatedIncome.push(newIncome);
+      setIncomes(updatedIncome);
     }
   };
 
-  const handleDeleteRow = (index) => {
-    const updatedTableData = [...tableData];
-    updatedTableData.splice(index, 1);
-    setTableData(updatedTableData);
-    setSelectedRow(null);
+  const handleDeleteRow = async (index, transaction_id) => {
+    try {
+      await axios.delete(
+        `http://localhost:5000/delete_transaction/${transaction_id}`
+      );
+    } catch (error) {
+      console.log(error);
+    }
+
+    const updatedIncome = [...incomes];
+    updatedIncome.splice(index, 1);
+    setIncomes(updatedIncome);
   };
 
   const handleEditRow = (index) => {
@@ -92,7 +123,7 @@ export const Income = () => {
   };
 
   const updateTotalAmount = () => {
-    const amounts = tableData.map((row) => parseFloat(row.amount));
+    const amounts = incomes.map((row) => parseFloat(row.amount));
     const total = amounts.reduce((acc, cur) => acc + cur, 0);
     setTotalAmount(total);
   };
@@ -163,26 +194,26 @@ export const Income = () => {
           </tr>
         </thead>
         <tbody>
-          {tableData.map((row, index) => (
+          {incomes.map((row, index) => (
             <tr key={index}>
-              <td className="center-content">{row.date}</td>
-              <td className="center-content">{row.job}</td>
-              <td className="center-content">${(row.amount).toFixed(2)}</td>
+              <td className="center-content">{row.date.slice(0, 10)}</td>
+              <td className="center-content">{row.category_name}</td>
+              <td className="center-content">${row.amount}</td>
               <td className="center-content">{row.description}</td>
               <td>
                 <div className="center-content">
-                <button
-                  className="small-button"
-                  onClick={() => handleEditRow(index)}
-                >
-                  Edit
-                </button>{" "}
-                <button
-                  className="small-button"
-                  onClick={() => handleDeleteRow(index)}
-                >
-                  Delete
-                </button>
+                  <button
+                    className="small-button"
+                    onClick={() => handleEditRow(index)}
+                  >
+                    Edit
+                  </button>{" "}
+                  <button
+                    className="small-button"
+                    onClick={() => handleDeleteRow(index, row.transaction_id)}
+                  >
+                    Delete
+                  </button>
                 </div>
               </td>
             </tr>
@@ -199,7 +230,7 @@ export const Income = () => {
         </button>
       </div>
       {/* <span class="money"></span> */}
-      
+
       <Footer />
     </div>
   );
