@@ -17,6 +17,19 @@ export const Expense = () => {
 
   const [expense, setExpense] = useState([]);
 
+  const updateTotal = async () => {
+    const totalExpenses = await axios.get("http://localhost:5000/expenses");
+    setTotalAmount(totalExpenses.data[0]["SUM(amount)"]);
+  };
+
+  const updateExpensePage = async () => {
+    const expenses = await axios.get(
+      "http://localhost:5000/expense_transactions"
+    );
+    console.log(expenses);
+    setExpense(expenses.data);
+  };
+
   useEffect(() => {
     const fetchExpense = async () => {
       try {
@@ -28,13 +41,13 @@ export const Expense = () => {
         setExpense(response.data);
         // const res = await fetch("http://localhost:5000/expense_transactions");
         // console.log(typeof res);
+        updateTotal();
       } catch (error) {
         // Handle the error
         console.error(error);
       }
     };
     fetchExpense();
-    updateTotalAmount();
   }, []);
 
   const navigate = useNavigate();
@@ -83,12 +96,14 @@ export const Expense = () => {
           newExpense
         );
         console.log(response.data);
+        updateExpensePage();
+        const updatedExpense = [...expense];
+        updatedExpense.push(newExpense);
+        setExpense(updatedExpense);
+        updateTotal();
       } catch (error) {
         console.log(error);
       }
-      const updatedExpense = [...expense];
-      updatedExpense.push(newExpense);
-      setExpense(updatedExpense);
     }
   };
 
@@ -97,10 +112,11 @@ export const Expense = () => {
       await axios.delete(
         `http://localhost:5000/delete_transaction/${transaction_id}`
       );
+      updateExpensePage();
     } catch (error) {
       console.log(error);
     }
-
+    updateTotal();
     const updatedExpense = [...expense];
     updatedExpense.splice(index, 1);
     setExpense(updatedExpense);
@@ -234,7 +250,7 @@ export const Expense = () => {
         </tbody>
       </table>
 
-      <p>Total Amount: ${totalAmount.toFixed(2)}</p>
+      <p>Total Amount: ${totalAmount}</p>
 
       <div className="button-container">
         <button className="visualize-button" onClick={handleVisualize}>

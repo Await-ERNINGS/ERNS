@@ -16,6 +16,8 @@ export const Income = () => {
 
   const [incomes, setIncomes] = useState([]);
 
+//const totalIncomes = await axios.get("http://localhost:5000/income");
+
   useEffect(() => {
     const fetchIncome = async () => {
       try {
