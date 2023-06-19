@@ -121,15 +121,15 @@ export const Dashboard = (props) => {
         <div className="centered-expenses">
           <h1 className="expenses">Expenses</h1>
           <Doughnut data={expenseData} />
-          <h2>Total Expenses: {totalExpense}</h2>
+          <h2>Total Expenses: ${totalExpense}</h2>
         </div>
         <div className="centered-incomes">
-          <h1 className="incomes">Incomes</h1>
+          <h1 className="incomes">Income</h1>
           <Doughnut data={incomeData} />
-          <h2>Total Incomes: {totalIncome}</h2>
+          <h2>Total Income: ${totalIncome}</h2>
         </div>
       </div>
-      <h4>Total Saving: {totalSaving}</h4>
+      <h4>Total Saving: ${totalSaving}</h4>
       {/* <button onClick={handleExpenseClick}>Expenses</button> */}
       <Footer />
     </div>
