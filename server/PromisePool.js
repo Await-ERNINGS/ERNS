@@ -5,7 +5,7 @@ exports.promisePool = mysql
     host: "localhost",
     user: "root",
 
-    password: "*****",
+    password: "****",
 
     database: "ern$",
   })

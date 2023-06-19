@@ -53,8 +53,8 @@ const MyCarousel = () => {
           height="410px"
           captionStyle={captionStyle}
           radius="10px"
-          slideNumber={true}
-          // slideNumberStyle={slideNumberStyle}
+          slideNumber={false}
+          // slideNumberStyle={false}
           captionPosition="top"
           automatic={true}
           dots={true}
