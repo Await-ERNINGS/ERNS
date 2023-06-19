@@ -30,10 +30,10 @@ const MyCarousel = () => {
     fontWeight: "bold",
     color: "white",
   };
-  const slideNumberStyle = {
-    fontSize: "20px",
-    fontWeight: "bold",
-  };
+  // const slideNumberStyle = {
+  //   fontSize: "20px",
+  //   fontWeight: "bold",
+  // };
 
   const imageStyle = {
     boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
@@ -53,8 +53,8 @@ const MyCarousel = () => {
           height="410px"
           captionStyle={captionStyle}
           radius="10px"
-          slideNumber={true}
-          slideNumberStyle={slideNumberStyle}
+          slideNumber={false}
+          // slideNumberStyle={false}
           captionPosition="top"
           automatic={true}
           dots={true}
