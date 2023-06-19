@@ -16,7 +16,15 @@ export const Income = () => {
 
   const [incomes, setIncomes] = useState([]);
 
-//const totalIncomes = await axios.get("http://localhost:5000/income");
+  const updateTotal = async () => {
+    const totalIncome = await axios.get("http://localhost:5000/income");
+    setTotalAmount(totalIncome.data[0]["SUM(amount)"]);
+  };
+
+  const updateIncomePage = async () => {
+    const income = await axios.get("http://localhost:5000/income_transactions");
+    setIncomes(income.data);
+  };
 
   useEffect(() => {
     const fetchIncome = async () => {
@@ -27,6 +35,7 @@ export const Income = () => {
         setIncomes(response.data);
         console.log(response.data);
         setIncomes(response.data);
+        updateTotal();
         // const res = await fetch("http://localhost:5000/expense_transactions");
         // console.log(typeof res);
       } catch (error) {
@@ -82,6 +91,8 @@ export const Income = () => {
           "http://localhost:5000/add_transaction/",
           newIncome
         );
+        updateTotal();
+        updateIncomePage();
         console.log(response.data);
       } catch (error) {
         console.log(error);
@@ -97,10 +108,11 @@ export const Income = () => {
       await axios.delete(
         `http://localhost:5000/delete_transaction/${transaction_id}`
       );
+      updateTotal();
     } catch (error) {
       console.log(error);
     }
-
+    updateIncomePage();
     const updatedIncome = [...incomes];
     updatedIncome.splice(index, 1);
     setIncomes(updatedIncome);
@@ -192,7 +204,7 @@ export const Income = () => {
             <th>Job</th>
             <th>Amount</th>
             <th>Description</th>
-            <th>Edit / Delete</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -204,12 +216,12 @@ export const Income = () => {
               <td className="center-content">{row.description}</td>
               <td>
                 <div className="center-content">
-                  <button
+                  {/* <button
                     className="small-button"
                     onClick={() => handleEditRow(index)}
                   >
                     Edit
-                  </button>{" "}
+                  </button>{" "} */}
                   <button
                     className="small-button"
                     onClick={() => handleDeleteRow(index, row.transaction_id)}
@@ -223,7 +235,7 @@ export const Income = () => {
         </tbody>
       </table>
 
-      <p>Total Amount: ${totalAmount.toFixed(2)}</p>
+      <p>Total Amount: ${totalAmount}</p>
 
       <div className="button-container">
         <button className="visualize-button" onClick={handleVisualize}>

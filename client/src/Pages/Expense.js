@@ -112,6 +112,7 @@ export const Expense = () => {
       await axios.delete(
         `http://localhost:5000/delete_transaction/${transaction_id}`
       );
+
       updateExpensePage();
     } catch (error) {
       console.log(error);
@@ -218,7 +219,7 @@ export const Expense = () => {
             <th>Category</th>
             <th>Amount</th>
             <th>Description</th>
-            <th>Edit / Delete</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -254,6 +255,7 @@ export const Expense = () => {
 
       <div className="button-container">
         <button className="visualize-button" onClick={handleVisualize}>
+          <div className="coin-stack"></div>
           Visualize
         </button>
       </div>
