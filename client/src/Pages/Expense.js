@@ -210,17 +210,17 @@ export const Expense = () => {
             <tr key={index}>
               <td>{row.date.slice(0, 10)}</td>
               <td className="center-content">{row.category_name}</td>
-              <td className="center-content">{row.amount}</td>
+              <td className="center-content">${row.amount}</td>
               <td className="center-content">{row.description}</td>
 
               <td>
                 <div className="center-content">
-                  <button
+                  {/* <button
                     className="small-button"
                     onClick={() => handleEditRow(index)}
                   >
                     Edit
-                  </button>{" "}
+                  </button>{" "} */}
                   <button
                     className="small-button"
                     onClick={() => handleDeleteRow(index, row.transaction_id)}
