@@ -157,7 +157,7 @@ export const Income = () => {
         onChange={handleDateChange}
       />
 
-      <label htmlFor="job">Job:</label>
+      <label htmlFor="job">Category:</label>
       <select id="job" value={selectedJob} onChange={handleJobChange}>
         <option value="">-- Select Job --</option>
         <option value="Employment Income">Employment Income</option>
@@ -201,7 +201,7 @@ export const Income = () => {
         <thead>
           <tr>
             <th>Date</th>
-            <th>Job</th>
+            <th>Category</th>
             <th>Amount</th>
             <th>Description</th>
             <th>Delete</th>
