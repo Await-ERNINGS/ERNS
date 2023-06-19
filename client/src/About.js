@@ -29,39 +29,36 @@ export const About = () => {
                   ERN$. Designed with the goal of helping individuals manage
                   their finances effectively, our application provides a
                   comprehensive solution for tracking expenses, setting budgets,
-                  and saving money. Please enjoy and feel free to reach out to
-                  us with any questions!"
+                  saving money, and make better financial decisions. Please
+                  enjoy and feel free to reach out to us with any questions!"
                 </blockquote>
                 <cite>- Ethan Lee</cite>
               </li>
               <li>
                 <img src={Reid} alt="Reid" />
                 <blockquote>
-                  "I am Reid, a proud United States Marine veteran. In the
-                  Marines, I learned the importance of persistence and the
-                  ability to improvise, adapt, and overcome challenges. These
-                  qualities have shaped my approach as a backend engineer and
-                  developer for this project. With a Bachelor's Degree in
-                  Computer Science from Rutgers University, I bring a strong
-                  foundation in coding and a passion for technology. As the
-                  backend engineer, I ensure the smooth functioning of the
-                  application's infrastructure, data management, and
-                  connectivity. Connect with me on LinkedIn and Facebook to stay
-                  in touch. I'm always open to engaging with fellow
-                  professionals and contributing to the tech community. Together
-                  with our talented team, we've created ERN$, a powerful and
-                  user-friendly financial management application. I'm here to
-                  help you take control of your personal finances and achieve
-                  your financial goals. Let's persist, improvise, adapt, and
-                  overcome any challenges that come our way."
+                  "I'm Reid, a proud Marine veteran who brings the qualities of
+                  persistence and adaptability to my role as a backend engineer.
+                  With a Computer Science degree from Rutgers University, I'm
+                  passionate about technology. As the backend engineer for ERN$,
+                  a user-friendly financial management app, I ensure smooth
+                  infrastructure, data management, and connectivity. Let's
+                  connect on LinkedIn and Facebook to contribute to the tech
+                  community and overcome any challenges together."
                 </blockquote>
                 <cite>- Reid</cite>
               </li>
               <li>
                 <img src={Nicole} alt="Nicole" />
                 <blockquote>
-                  "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor "
+                  "I'm Nicole, a passionate software engineer specializing in
+                  innovative solutions. With a Criminal Justice degree and minor
+                  in Computer Science from John Jay college, I proudly introduce
+                  ERN$. Our focus: simplicity, functionality, and reliability.
+                  Experience a seamless, intuitive app to understand your
+                  spending habits and make informed financial decisions. Join me
+                  on your confident financial journey. Reach out for any
+                  questions or feedback. Let's explore ERN$ together. "
                 </blockquote>
                 <cite>- Nicole Portalatin</cite>
               </li>
