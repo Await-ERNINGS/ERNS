@@ -32,8 +32,6 @@ h2 {
   width: fit-content;
   margin: auto;
   margin-top: 1rem;
-  
-
 }
 
 h4 {
@@ -49,34 +47,35 @@ h4 {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 5rem;
+  color: white;
 }
 
 /* Responsive Styles */
 
+h2 {
+  font-size: 1rem;
+  padding: 2px;
+}
 
-  h2 {
-    font-size: 1rem;
-    padding: 2px;
-  }
-
-  h4 {
-    font-size: 0.8rem;
-    padding: 5px;
-  }
-  h1{
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-bottom: 0;
-    font-size: 150%;
-  }
-  /* .greeting {
-    color:black;
-    font-size: larger;
-    margin-top: 10px;
-    margin-right: 10px;
-  } */
-.incomes,.expenses {
-  font-size:140%;
+h4 {
+  font-size: 0.8rem;
+  padding: 5px;
+}
+h1 {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-size: 150%;
+}
+.greeting {
+  color: white;
+  font-size: larger;
+  margin-top: 200px;
+  margin-right: 10px;
+}
+.incomes,
+.expenses {
+  font-size: 140%;
   padding-top: 0;
   padding-bottom: 0;
   margin-top: 0;

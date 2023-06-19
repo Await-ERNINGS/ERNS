@@ -129,7 +129,7 @@ export const Dashboard = (props) => {
           <h2>Total Income: ${totalIncome}</h2>
         </div>
       </div>
-      <h4>Total Saving: ${totalSaving}</h4>
+      <h4>Total Savings: ${totalSaving}</h4>
       {/* <button onClick={handleExpenseClick}>Expenses</button> */}
       <Footer />
     </div>
